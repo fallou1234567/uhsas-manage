@@ -5,52 +5,128 @@ namespace Database\Seeders;
 use App\Models\Commune;
 use App\Models\Department;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
-use RuntimeException;
 
 class CommuneSeeder extends Seeder
 {
     public function run(): void
     {
-        $url = 'https://galsenapi.lassanasiby.com/api/v1/communes/';
+        /*
+        |--------------------------------------------------------------------------
+        | Région Dakar
+        |--------------------------------------------------------------------------
+        |
+        | Structure :
+        | Dakar
+        |   └── Département
+        |        └── Commune d'arrondissement
+        |
+        */
 
-        $response = Http::timeout(60)
-            ->retry(3, 1000)
-            ->get($url, [
-                'page_size' => 600,
-            ]);
+        $communes = [
 
-        if (!$response->successful()) {
-            throw new RuntimeException(
-                'Impossible de récupérer les communes du Sénégal.'
-            );
-        }
+            /*
+            |--------------------------------------------------------------------------
+            | Département de Dakar
+            |--------------------------------------------------------------------------
+            */
 
-        $data = $response->json();
+            'SN0101' => [
+                'Plateau',
+                'Médina',
+                'Fann-Point E-Amitié',
+                'Gueule Tapée-Fass-Colobane',
+                'Gorée',
+                'Grand Dakar',
+                'Biscuiterie',
+                'Hann Bel-Air',
+                'HLM',
+                'Sicap-Liberté',
+                'Dieuppeul-Derklé',
+                'Mermoz-Sacré-Cœur',
+                'Ouakam',
+                'Ngor',
+                'Yoff',
+                'Cambérène',
+                'Parcelles Assainies',
+            ],
 
-        $communes = $data['results'] ?? $data['data'] ?? [];
+            /*
+            |--------------------------------------------------------------------------
+            | Département de Pikine
+            |--------------------------------------------------------------------------
+            */
 
-        if (empty($communes)) {
-            throw new RuntimeException(
-                'Aucune commune trouvée dans la réponse API.'
-            );
-        }
+            'SN0102' => [
+                'Pikine Est',
+                'Pikine Nord',
+                'Pikine Ouest',
+                'Dalifort',
+                'Djiddah Thiaroye Kao',
+                'Guinaw Rail Nord',
+                'Guinaw Rail Sud',
+                'Thiaroye Gare',
+                'Thiaroye-sur-Mer',
+                'Tivaouane Diacksao',
+                'Diamaguène Sicap Mbao',
+                'Mbao',
+            ],
 
-        foreach ($communes as $item) {
+            /*
+            |--------------------------------------------------------------------------
+            | Département de Guédiawaye
+            |--------------------------------------------------------------------------
+            */
 
-            $name = $item['name']
-                ?? $item['name_local']
-                ?? null;
+            'SN0103' => [
+                'Golf Sud',
+                'Sam Notaire',
+                'Ndiarème Limamoulaye',
+                'Wakhinane Nimzatt',
+                'Médina Gounass',
+            ],
 
-            $departmentCode = $item['department']
-                ?? $item['departement']
-                ?? $item['department_code']
-                ?? null;
+            /*
+            |--------------------------------------------------------------------------
+            | Département de Rufisque
+            |--------------------------------------------------------------------------
+            */
 
-            if (!$name || !$departmentCode) {
-                continue;
-            }
+            'SN0104' => [
+                'Rufisque Est',
+                'Rufisque Nord',
+                'Rufisque Ouest',
+                'Bargny',
+                'Sébikotane',
+                'Diamniadio',
+                'Jaxaay-Parcelles',
+                'Tivaouane Peulh-Niaga',
+                'Yène',
+                'Sangalkam',
+            ],
+
+            /*
+            |--------------------------------------------------------------------------
+            | Département de Keur Massar
+            |--------------------------------------------------------------------------
+            */
+
+            'SN0105' => [
+                'Keur Massar Nord',
+                'Keur Massar Sud',
+                'Jaxaay-Parcelles',
+                'Malika',
+                'Yeumbeul Nord',
+                'Yeumbeul Sud',
+            ],
+        ];
+
+        /*
+        |--------------------------------------------------------------------------
+        | Import des communes
+        |--------------------------------------------------------------------------
+        */
+
+        foreach ($communes as $departmentCode => $departmentCommunes) {
 
             $department = Department::where(
                 'code',
@@ -58,18 +134,29 @@ class CommuneSeeder extends Seeder
             )->first();
 
             if (!$department) {
+                $this->command->warn(
+                    "Département introuvable : {$departmentCode}"
+                );
+
                 continue;
             }
 
-            Commune::updateOrCreate(
-                [
-                    'department_id' => $department->id,
-                    'name' => $name,
-                ],
-                [
-                    'is_active' => true,
-                ]
-            );
+            foreach ($departmentCommunes as $communeName) {
+
+                Commune::updateOrCreate(
+                    [
+                        'department_id' => $department->id,
+                        'name' => $communeName,
+                    ],
+                    [
+                        'is_active' => true,
+                    ]
+                );
+            }
         }
+
+        $this->command->info(
+            'Communes d\'arrondissement importées avec succès.'
+        );
     }
 }

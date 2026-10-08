@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
 
 
+            UserSeeder::class,
+
             RegionSeeder::class,
             DepartmentSeeder::class,
             CommuneSeeder::class,
