@@ -157,4 +157,17 @@ Route::post('/logout', function (Request $request) {
     return redirect()->route('login');
 })->name('logout');
 
+
+Route::get('/membre/{member}', [
+    MemberController::class,
+    'show',
+])->name('member.public');
+
+Route::get('/membre/{member}/qr', [
+    MemberController::class,
+    'qr',
+])->name('member.public.qr');
+
+
+
 require __DIR__.'/auth.php';

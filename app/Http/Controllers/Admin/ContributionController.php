@@ -16,7 +16,6 @@ class ContributionController extends Controller
     {
         $query = Contribution::with('member');
 
-
         /*
         |--------------------------------------------------------------------------
         | Recherche
@@ -40,7 +39,6 @@ class ContributionController extends Controller
             });
         }
 
-
         /*
         |--------------------------------------------------------------------------
         | Montant
@@ -55,7 +53,6 @@ class ContributionController extends Controller
             );
 
         }
-
 
         /*
         |--------------------------------------------------------------------------
@@ -72,7 +69,6 @@ class ContributionController extends Controller
 
         }
 
-
         /*
         |--------------------------------------------------------------------------
         | Année
@@ -88,7 +84,6 @@ class ContributionController extends Controller
 
         }
 
-
         /*
         |--------------------------------------------------------------------------
         | Liste
@@ -99,7 +94,6 @@ class ContributionController extends Controller
             ->latest('paid_at')
             ->paginate(15)
             ->withQueryString();
-
 
         /*
         |--------------------------------------------------------------------------
@@ -122,7 +116,6 @@ class ContributionController extends Controller
             'pending'
         )->count();
 
-
         return view(
             'admin.contributions.index',
             compact(
@@ -135,14 +128,14 @@ class ContributionController extends Controller
         );
     }
 
-
     /**
      * Formulaire d'enregistrement.
      */
     public function create()
     {
         $members = Member::where('status', 'active')
-            ->orderBy('full_name')
+            ->orderBy('first_name')
+            ->orderBy('last_name')
             ->get();
 
         return view(
@@ -150,7 +143,6 @@ class ContributionController extends Controller
             compact('members')
         );
     }
-
 
     /**
      * Enregistrer une cotisation.
@@ -174,7 +166,7 @@ class ContributionController extends Controller
                 'required',
                 'integer',
                 'min:2020',
-                'max:' . (now()->year + 1),
+                'max:'.(now()->year + 1),
             ],
 
             'paid_at' => [
@@ -189,29 +181,21 @@ class ContributionController extends Controller
 
         ], [
 
-            'member_id.required' =>
-                'Veuillez sélectionner un membre.',
+            'member_id.required' => 'Veuillez sélectionner un membre.',
 
-            'member_id.exists' =>
-                'Le membre sélectionné n’existe pas.',
+            'member_id.exists' => 'Le membre sélectionné n’existe pas.',
 
-            'amount.required' =>
-                'Veuillez sélectionner un montant.',
+            'amount.required' => 'Veuillez sélectionner un montant.',
 
-            'amount.in' =>
-                'Le montant sélectionné est invalide.',
+            'amount.in' => 'Le montant sélectionné est invalide.',
 
-            'year.required' =>
-                'L’année est obligatoire.',
+            'year.required' => 'L’année est obligatoire.',
 
-            'paid_at.required' =>
-                'La date de paiement est obligatoire.',
+            'paid_at.required' => 'La date de paiement est obligatoire.',
 
-            'status.required' =>
-                'Le statut du paiement est obligatoire.',
+            'status.required' => 'Le statut du paiement est obligatoire.',
 
         ]);
-
 
         /*
         |--------------------------------------------------------------------------
@@ -228,12 +212,10 @@ class ContributionController extends Controller
             return back()
                 ->withInput()
                 ->withErrors([
-                    'member_id' =>
-                        'Seuls les membres actifs peuvent avoir une cotisation enregistrée.'
+                    'member_id' => 'Seuls les membres actifs peuvent avoir une cotisation enregistrée.',
                 ]);
 
         }
-
 
         /*
         |--------------------------------------------------------------------------
@@ -251,18 +233,15 @@ class ContributionController extends Controller
             )
             ->exists();
 
-
         if ($alreadyExists) {
 
             return back()
                 ->withInput()
                 ->withErrors([
-                    'member_id' =>
-                        'Une cotisation existe déjà pour ce membre pour l’année sélectionnée.'
+                    'member_id' => 'Une cotisation existe déjà pour ce membre pour l’année sélectionnée.',
                 ]);
 
         }
-
 
         /*
         |--------------------------------------------------------------------------
@@ -284,7 +263,6 @@ class ContributionController extends Controller
 
         ]);
 
-
         /*
         |--------------------------------------------------------------------------
         | Redirection
@@ -296,8 +274,8 @@ class ContributionController extends Controller
             ->with(
                 'success',
                 'La cotisation de '
-                . $member->full_name
-                . ' a été enregistrée avec succès.'
+                .$member->full_name
+                .' a été enregistrée avec succès.'
             );
     }
 }
