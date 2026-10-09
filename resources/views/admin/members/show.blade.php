@@ -1493,7 +1493,7 @@
 
                         @endif
 
-
+{{-- 
                         <a
                             href="{{ route('registration.card.pdf', $member) }}"
                             class="full-button gold"
@@ -1516,7 +1516,7 @@
 
                             Télécharger la carte PDF
 
-                        </a>
+                        </a> --}}
 
 
                         @if($member->status === 'active')

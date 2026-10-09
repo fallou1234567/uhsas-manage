@@ -20,4 +20,6 @@ class Profession extends Model
     {
         return $this->hasMany(Member::class);
     }
+    
 }
+

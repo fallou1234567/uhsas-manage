@@ -720,7 +720,7 @@
             </div>
 
             <div class="stat-value">
-                {{ number_format($totalContributions ?? 0, 0, ',', ' ') }}
+                {{ number_format($totalContributions, 0, ',', ' ') }} FCFA
                 <small style="font-size:11px;">FCFA</small>
             </div>
 

@@ -560,7 +560,7 @@
             <form
                 id="regionForm"
                 method="POST"
-                action="{{ route('admin.locations.regions.store') }}"
+                action="{{ route('admin.regions.store') }}"
             >
 
                 @csrf
@@ -673,7 +673,7 @@ function openRegionModal() {
     title.textContent = 'Ajouter une région';
 
     form.action =
-        "{{ route('admin.locations.regions.store') }}";
+        "{{ route('admin.regions.store') }}";
 
     methodContainer.innerHTML = '';
 

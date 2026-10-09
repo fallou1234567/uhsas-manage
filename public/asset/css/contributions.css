@@ -1,0 +1,166 @@
+
+:root {
+    --uhsas-green: #075B32;
+    --uhsas-dark: #043D23;
+    --uhsas-gold: #D6A52E;
+    --uhsas-gold-light: #F0C85A;
+    --uhsas-bg: #F4F7F3;
+    --uhsas-border: #E1E7E2;
+    --uhsas-muted: #718078;
+}
+
+/* Conteneur général */
+.contributions-page {
+    color: #1F2A23;
+}
+
+/* Titres */
+.contributions-page h1,
+.contributions-page h2,
+.contributions-page h3 {
+    color: var(--uhsas-dark);
+}
+
+/* Cartes et panneaux */
+.contributions-page .bg-white {
+    background-color: #fff;
+}
+
+.contributions-page .rounded-2xl {
+    border-radius: 1rem;
+}
+
+.contributions-page .border-gray-200 {
+    border-color: var(--uhsas-border);
+}
+
+.contributions-page .shadow-sm {
+    box-shadow: 0 4px 16px rgba(4, 61, 35, 0.045);
+}
+
+/* Champs de formulaire */
+.contributions-page input:not([type="radio"]):not([type="checkbox"]),
+.contributions-page select,
+.contributions-page textarea {
+    border-color: var(--uhsas-border);
+    border-radius: 0.75rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contributions-page input:focus,
+.contributions-page select:focus,
+.contributions-page textarea:focus {
+    border-color: var(--uhsas-green);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(7, 91, 50, 0.10);
+}
+
+/* Boutons principaux */
+.contributions-page a.bg-\[\#075B32\],
+.contributions-page button.bg-\[\#075B32\] {
+    background-color: var(--uhsas-green);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.contributions-page a.bg-\[\#075B32\]:hover,
+.contributions-page button.bg-\[\#075B32\]:hover {
+    background-color: var(--uhsas-dark);
+    transform: translateY(-1px);
+}
+
+/* Sélection des montants */
+.contributions-page input[type="radio"] + div {
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.contributions-page input[type="radio"]:checked + div {
+    border-color: var(--uhsas-green);
+    background-color: #F3FAF6;
+}
+
+/* En-têtes de tableaux */
+.contributions-page thead {
+    background-color: #F8FAF8;
+}
+
+.contributions-page thead th {
+    color: #68756D;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.contributions-page tbody tr {
+    transition: background-color 0.15s;
+}
+
+.contributions-page tbody tr:hover {
+    background-color: #FAFCFA;
+}
+
+.contributions-page tbody td {
+    border-color: #EEF2EF;
+}
+
+/* Badges de statut */
+.contributions-page .bg-green-50 {
+    background-color: #F0FDF4;
+}
+
+.contributions-page .text-green-700 {
+    color: #166534;
+}
+
+.contributions-page .bg-yellow-50 {
+    background-color: #FFFBEB;
+}
+
+.contributions-page .text-yellow-700 {
+    color: #92400E;
+}
+
+/* Résumé de la cotisation */
+.contributions-page .summary-panel {
+    color: white;
+    border-radius: 1rem;
+    background: linear-gradient(
+        135deg,
+        var(--uhsas-dark),
+        var(--uhsas-green)
+    );
+    box-shadow: 0 12px 28px rgba(4, 61, 35, 0.16);
+}
+
+.contributions-page .summary-panel .summary-amount {
+    color: var(--uhsas-gold-light);
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+/* Pagination */
+.contributions-page nav[role="navigation"] a,
+.contributions-page nav[role="navigation"] span {
+    border-radius: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .contributions-page .rounded-2xl {
+        border-radius: 0.85rem;
+    }
+
+    .contributions-page .px-6,
+    .contributions-page .p-6 {
+        padding: 1rem;
+    }
+
+    .contributions-page .text-2xl {
+        font-size: 1.35rem;
+    }
+
+    .contributions-page table {
+        min-width: 650px;
+    }
+}

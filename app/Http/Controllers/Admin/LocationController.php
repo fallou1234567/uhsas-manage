@@ -122,4 +122,21 @@ class LocationController extends Controller
             )
         );
     }
+
+
+
+    public function storeRegion(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255', 'unique:regions,name'],
+        ]);
+
+        Region::create($validated);
+
+        return redirect()
+            ->route('admin.locations.regions')
+            ->with('success', 'Région enregistrée avec succès.');
+    }
+
+
 }

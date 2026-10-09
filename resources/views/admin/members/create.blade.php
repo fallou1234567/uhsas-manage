@@ -306,7 +306,7 @@
 
 
                         {{-- Commune --}}
-                        <div>
+                        {{-- <div>
                             <label for="commune_id"
                                    class="block text-sm font-semibold text-gray-700 mb-2">
                                 Commune
@@ -335,7 +335,7 @@
                                 @endforeach
 
                             </select>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

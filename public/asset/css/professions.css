@@ -1,0 +1,522 @@
+
+/* =========================================================
+   UHSAS — Gestion des professions
+   Fichier : public/css/admin/professions.css
+   ========================================================= */
+
+.professions-page {
+    --prof-primary: #16794b;
+    --prof-primary-dark: #105c38;
+    --prof-primary-light: #e8f5ed;
+    --prof-bg: #f5f7f6;
+    --prof-text: #202b25;
+    --prof-muted: #748078;
+    --prof-border: #e5ebe7;
+    --prof-danger: #dc3545;
+    --prof-radius: 14px;
+
+    color: var(--prof-text);
+    padding-bottom: 35px;
+}
+
+/* En-tête des pages */
+.professions-page .page-heading {
+    margin-bottom: 28px;
+}
+
+.professions-page .page-heading h1 {
+    color: var(--prof-text);
+    font-size: 1.7rem;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.professions-page .page-heading p {
+    color: var(--prof-muted);
+    font-size: 0.94rem;
+    margin-bottom: 0;
+}
+
+.professions-page .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--prof-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.professions-page .back-link:hover {
+    color: var(--prof-primary);
+}
+
+/* Cartes */
+.professions-page .card {
+    background: #fff;
+    border: 1px solid rgba(229, 235, 231, 0.85);
+    border-radius: var(--prof-radius);
+    box-shadow: 0 4px 18px rgba(25, 54, 38, 0.045);
+    overflow: hidden;
+}
+
+.professions-page .card-header {
+    background: #fff;
+    border-bottom: 1px solid var(--prof-border);
+    padding: 18px 22px;
+}
+
+.professions-page .card-header h2,
+.professions-page .card-header h3 {
+    color: var(--prof-text);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.professions-page .card-body {
+    padding: 24px;
+}
+
+/* Boutons */
+.professions-page .btn {
+    border-radius: 9px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.professions-page .btn-success {
+    background-color: var(--prof-primary);
+    border-color: var(--prof-primary);
+    color: #fff;
+}
+
+.professions-page .btn-success:hover {
+    background-color: var(--prof-primary-dark);
+    border-color: var(--prof-primary-dark);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(22, 121, 75, 0.18);
+    transform: translateY(-1px);
+}
+
+.professions-page .btn-primary {
+    background-color: #2864dc;
+    border-color: #2864dc;
+}
+
+.professions-page .btn-outline-info {
+    color: #187b94;
+    border-color: #c4e6ed;
+}
+
+.professions-page .btn-outline-info:hover {
+    background-color: #e7f6f9;
+    color: #126477;
+}
+
+.professions-page .btn-outline-primary {
+    color: #2864dc;
+    border-color: #cfdbfa;
+}
+
+.professions-page .btn-outline-primary:hover {
+    background-color: #edf2ff;
+    color: #174bb5;
+}
+
+.professions-page .btn-outline-danger {
+    color: var(--prof-danger);
+    border-color: #f1c9ce;
+}
+
+.professions-page .btn-outline-danger:hover {
+    background-color: #fff0f1;
+    color: #b42332;
+}
+
+.professions-page .btn-light {
+    background-color: #f7f9f8;
+    color: #435047;
+}
+
+.professions-page .btn:focus-visible {
+    outline: 3px solid rgba(22, 121, 75, 0.2);
+    outline-offset: 2px;
+}
+
+/* Barre de recherche */
+.professions-page .search-panel {
+    margin-bottom: 24px;
+}
+
+.professions-page .form-label {
+    color: #34433a;
+    font-size: 0.88rem;
+    font-weight: 650;
+    margin-bottom: 8px;
+}
+
+.professions-page .form-control,
+.professions-page .form-select {
+    min-height: 45px;
+    border: 1px solid #dce5df;
+    border-radius: 9px;
+    background-color: #fff;
+    color: var(--prof-text);
+    font-size: 0.92rem;
+    padding: 10px 13px;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.professions-page .form-control::placeholder {
+    color: #a0aaa3;
+}
+
+.professions-page .form-control:focus,
+.professions-page .form-select:focus {
+    border-color: var(--prof-primary);
+    box-shadow: 0 0 0 3px rgba(22, 121, 75, 0.11);
+}
+
+.professions-page textarea.form-control {
+    min-height: 120px;
+}
+
+.professions-page .form-text {
+    color: var(--prof-muted);
+    font-size: 0.8rem;
+    margin-top: 7px;
+}
+
+.professions-page .invalid-feedback {
+    font-size: 0.82rem;
+}
+
+.professions-page .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-top: 22px;
+    border-top: 1px solid var(--prof-border);
+}
+
+/* Carte statistique */
+.professions-page .stat-card {
+    height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.professions-page .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(25, 54, 38, 0.08);
+}
+
+.professions-page .stat-icon {
+    width: 54px;
+    height: 54px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: var(--prof-primary-light);
+    color: var(--prof-primary);
+    font-size: 1.45rem;
+}
+
+.professions-page .stat-label {
+    color: var(--prof-muted);
+    font-size: 0.82rem;
+    margin-bottom: 5px;
+}
+
+.professions-page .stat-value {
+    color: var(--prof-text);
+    font-size: 1.7rem;
+    font-weight: 750;
+    line-height: 1.2;
+}
+
+/* Tableau */
+.professions-page .table-responsive {
+    border-radius: 0 0 var(--prof-radius) var(--prof-radius);
+}
+
+.professions-page .table {
+    color: var(--prof-text);
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.professions-page .table thead th {
+    background: #f7f9f8;
+    border-bottom: 1px solid var(--prof-border);
+    color: #68766d;
+    font-size: 0.76rem;
+    font-weight: 750;
+    letter-spacing: 0.35px;
+    padding: 16px 14px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.professions-page .table tbody td {
+    border-bottom: 1px solid #edf1ee;
+    font-size: 0.9rem;
+    padding: 16px 14px;
+}
+
+.professions-page .table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.professions-page .table-hover tbody tr:hover > * {
+    background-color: #f8fbf9;
+}
+
+.professions-page .table .fw-semibold {
+    font-weight: 650 !important;
+}
+
+.professions-page .table .btn {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    min-height: 34px;
+    min-width: 34px;
+    padding: 6px 9px;
+}
+
+.professions-page .table .badge {
+    border-radius: 7px;
+    font-size: 0.77rem;
+    font-weight: 650;
+    padding: 7px 10px;
+}
+
+.professions-page .table .bg-success.bg-opacity-10 {
+    background-color: var(--prof-primary-light) !important;
+    color: var(--prof-primary) !important;
+}
+
+/* État vide */
+.professions-page .empty-state {
+    padding: 48px 20px;
+    text-align: center;
+}
+
+.professions-page .empty-state .empty-icon {
+    align-items: center;
+    background: var(--prof-primary-light);
+    border-radius: 20px;
+    color: var(--prof-primary);
+    display: inline-flex;
+    font-size: 2rem;
+    height: 76px;
+    justify-content: center;
+    margin-bottom: 18px;
+    width: 76px;
+}
+
+.professions-page .empty-state h3 {
+    color: var(--prof-text);
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.professions-page .empty-state p {
+    color: var(--prof-muted);
+    font-size: 0.9rem;
+}
+
+/* Pagination Laravel / Bootstrap */
+.professions-page .pagination {
+    gap: 5px;
+    margin-bottom: 0;
+}
+
+.professions-page .page-link {
+    border: 1px solid var(--prof-border);
+    border-radius: 7px !important;
+    color: var(--prof-primary);
+    font-size: 0.86rem;
+    padding: 8px 12px;
+}
+
+.professions-page .page-link:hover {
+    background-color: var(--prof-primary-light);
+    border-color: #c8e4d3;
+}
+
+.professions-page .page-item.active .page-link {
+    background-color: var(--prof-primary);
+    border-color: var(--prof-primary);
+    color: #fff;
+}
+
+.professions-page .page-item.disabled .page-link {
+    color: #a5afa8;
+}
+
+/* Détails d'une profession */
+.professions-page .detail-icon {
+    align-items: center;
+    background: var(--prof-primary-light);
+    border-radius: 16px;
+    color: var(--prof-primary);
+    display: inline-flex;
+    height: 65px;
+    justify-content: center;
+    width: 65px;
+    flex-shrink: 0;
+}
+
+.professions-page .detail-label {
+    color: var(--prof-muted);
+    font-size: 0.82rem;
+    margin-bottom: 6px;
+}
+
+.professions-page .detail-value {
+    color: var(--prof-text);
+    font-size: 0.95rem;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+}
+
+.professions-page .detail-stat {
+    background: #f8faf9;
+    border: 1px solid var(--prof-border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* Alertes */
+.professions-page .alert {
+    border: 0;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    padding: 14px 18px;
+}
+
+.professions-page .alert-success {
+    background: #e8f5ed;
+    color: #145b38;
+}
+
+.professions-page .alert-danger {
+    background: #fff0f1;
+    color: #a61e2b;
+}
+
+
+
+/* Correction de l'en-tête de la liste */
+.professions-page .page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.professions-page .page-heading-text {
+    flex: 1 1 300px;
+    min-width: 0;
+}
+
+.professions-page .page-heading-text h1 {
+    margin: 0 0 8px;
+    line-height: 1.35;
+}
+
+.professions-page .page-heading-text p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.professions-page .profession-add-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin: 0;
+}
+
+@media (max-width: 576px) {
+    .professions-page .page-heading {
+        align-items: stretch;
+    }
+
+    .professions-page .page-heading-text {
+        flex-basis: 100%;
+    }
+
+    .professions-page .profession-add-btn {
+        align-self: flex-start;
+    }
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .professions-page {
+        padding-bottom: 20px;
+    }
+
+    .professions-page .page-heading h1 {
+        font-size: 1.4rem;
+    }
+
+    .professions-page .card-body {
+        padding: 18px;
+    }
+
+    .professions-page .card-header {
+        padding: 15px 18px;
+    }
+
+    .professions-page .table thead th,
+    .professions-page .table tbody td {
+        padding: 12px 10px;
+    }
+
+    .professions-page .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .professions-page .form-actions .btn {
+        width: 100%;
+    }
+
+    .professions-page .stat-value {
+        font-size: 1.45rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .professions-page .page-heading h1 {
+        font-size: 1.25rem;
+    }
+
+    .professions-page .btn {
+        font-size: 0.82rem;
+        padding: 9px 12px;
+    }
+
+    .professions-page .table {
+        min-width: 650px;
+    }
+
+
+}

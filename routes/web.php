@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\ContributionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\MemberAdminController;
+use App\Http\Controllers\Admin\ProfessionController;
+
 use App\Http\Controllers\Public\MemberController;
 use App\Http\Controllers\Public\RegistrationController;
 use Illuminate\Http\Request;
@@ -145,6 +147,12 @@ Route::middleware(['auth'])
             'locations/departments',
             [LocationController::class, 'departments']
         )->name('locations.departments');
+        
+        Route::post('/regions', [LocationController::class, 'storeRegion'])
+        ->name('regions.store');
+
+        Route::resource('professions', ProfessionController::class);
+
 
     });
 

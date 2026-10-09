@@ -180,10 +180,10 @@ class MemberAdminController extends Controller
                 'exists:departments,id',
             ],
 
-            'commune_id' => [
-                'required',
-                'exists:communes,id',
-            ],
+            // 'commune_id' => [
+            //     'required',
+            //     'exists:communes,id',
+            // ],
 
             'address' => [
                 'nullable',

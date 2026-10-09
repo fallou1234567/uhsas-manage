@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+@stack('styles')
+
 <head>
 
     <meta charset="UTF-8">
@@ -1362,7 +1365,7 @@
 
                     {{-- RAPPORTS --}}
 
-                    <li class="sidebar-menu-item">
+                    {{-- <li class="sidebar-menu-item">
 
                         <a href=""
                             class="sidebar-link {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
@@ -1388,7 +1391,7 @@
 
                         </a>
 
-                    </li>
+                    </li> --}}
 
 
                 </ul>

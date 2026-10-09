@@ -5,15 +5,9 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <meta
-        name="theme-color"
-        content="#166534"
-    >
+    <meta name="theme-color" content="#166534">
 
     <title>Inscription UHSAS</title>
 
@@ -21,7 +15,6 @@
 
 
     <style>
-
         html {
             -webkit-text-size-adjust: 100%;
             text-size-adjust: 100%;
@@ -400,6 +393,52 @@
             }
         }
 
+
+        .login-icon-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 46px;
+            height: 46px;
+
+            color: #166534;
+            background: #ffffff;
+            border: 1px solid #dcfce7;
+            border-radius: 50%;
+
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+            text-decoration: none;
+
+            transition: all 0.2s ease;
+        }
+
+        .login-icon-button:hover {
+            color: #ffffff;
+            background: #166534;
+            border-color: #166534;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(22, 101, 52, 0.22);
+        }
+
+        .login-icon-button:focus-visible {
+            outline: 3px solid #86efac;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 480px) {
+            .login-icon-button {
+                top: 12px;
+                right: 12px;
+                width: 42px;
+                height: 42px;
+            }
+        }
     </style>
 
 </head>
@@ -408,11 +447,23 @@
 <body class="bg-gray-100 text-gray-900">
 
 
-<div class="uhsas-page min-h-screen">
+    <div class="uhsas-page min-h-screen">
 
 
-    <div
-        class="
+        <a href="{{ route('login') }}" class="login-icon-button" aria-label="Se connecter" title="Se connecter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                <polyline points="10 17 15 12 10 7" />
+                <line x1="15" y1="12" x2="3" y2="12" />
+            </svg>
+        </a>
+
+
+
+        <div
+            class="
             uhsas-container
             w-full
             max-w-2xl
@@ -421,27 +472,25 @@
             sm:px-4
             py-4
             sm:py-8
-        "
-    >
+        ">
 
 
-        <div
-            class="
+            <div
+                class="
                 bg-white
                 rounded-2xl
                 shadow-sm
                 overflow-hidden
                 animate-form
-            "
-        >
+            ">
 
 
-            {{-- =====================================================
+                {{-- =====================================================
                 HEADER
             ====================================================== --}}
 
-            <header
-                class="
+                <header
+                    class="
                     bg-green-800
                     text-white
                     px-5
@@ -449,57 +498,50 @@
                     py-8
                     sm:py-10
                     text-center
-                "
-            >
+                ">
 
-                <img
-                    src="{{ asset('asset/images/logo-uhsas.jpeg') }}"
-                    alt="Logo UHSAS"
-                    class="
+                    <img src="{{ asset('asset/images/logo-uhsas.jpeg') }}" alt="Logo UHSAS"
+                        class="
                         mx-auto
                         h-20
                         sm:h-24
                         w-auto
                         object-contain
                         mb-4
-                    "
-                >
+                    ">
 
-                <h1
-                    class="
+                    <h1
+                        class="
                         text-2xl
                         sm:text-3xl
                         font-bold
-                    "
-                >
-                    UHSAS
-                </h1>
+                    ">
+                        UHSAS
+                    </h1>
 
-                <p
-                    class="
+                    <p
+                        class="
                         mt-2
                         text-green-100
                         text-base
-                    "
-                >
-                    Inscription membre
-                </p>
+                    ">
+                        Inscription membre
+                    </p>
 
-                <p
-                    class="
+                    <p
+                        class="
                         mt-4
                         text-sm
                         sm:text-base
                         text-green-100
                         leading-relaxed
-                    "
-                >
-                    Remplissez simplement ce formulaire
-                    pour demander votre carte de membre.
-                </p>
+                    ">
+                        Remplissez simplement ce formulaire
+                        pour demander votre carte de membre.
+                    </p>
 
-                <div
-                    class="
+                    <div
+                        class="
                         mt-5
                         inline-flex
                         items-center
@@ -511,474 +553,371 @@
                         text-xs
                         sm:text-sm
                         text-green-50
-                    "
-                >
+                    ">
 
-                    <span
-                        class="
+                        <span
+                            class="
                             h-2
                             w-2
                             rounded-full
                             bg-green-300
-                        "
-                    ></span>
+                        "></span>
 
-                    Tous les champs sont obligatoires
-                    sauf l’email.
+                        Tous les champs sont obligatoires
+                        sauf l’email.
 
-                </div>
+                    </div>
 
-            </header>
+                </header>
 
 
-            {{-- =====================================================
+                {{-- =====================================================
                 FORMULAIRE
             ====================================================== --}}
 
-            <form
-                method="POST"
-                action="{{ route('registration.store') }}"
-                enctype="multipart/form-data"
-                class="
+                <form method="POST" action="{{ route('registration.store') }}" enctype="multipart/form-data"
+                    class="
                     uhsas-form
                     p-5
                     sm:p-7
                     space-y-8
-                "
-            >
+                ">
 
-                @csrf
+                    @csrf
 
 
-                {{-- =================================================
+                    {{-- =================================================
                     ERREUR GENERALE
                 ================================================== --}}
 
-                @if ($errors->has('general'))
-
-                    <div
-                        class="
+                    @if ($errors->has('general'))
+                        <div
+                            class="
                             rounded-xl
                             border
                             border-red-200
                             bg-red-50
                             p-4
-                        "
-                    >
+                        ">
 
-                        <p class="font-semibold text-red-800">
+                            <p class="font-semibold text-red-800">
 
-                            {{ $errors->first('general') }}
+                                {{ $errors->first('general') }}
 
-                        </p>
+                            </p>
 
-                    </div>
-
-                @endif
+                        </div>
+                    @endif
 
 
-                {{-- =================================================
+                    {{-- =================================================
                     INFORMATIONS PERSONNELLES
                 ================================================== --}}
 
-                <section class="uhsas-section">
+                    <section class="uhsas-section">
 
-                    <div class="mb-5">
+                        <div class="mb-5">
 
-                        <h2
-                            class="
+                            <h2
+                                class="
                                 text-lg
                                 sm:text-xl
                                 font-bold
                                 text-gray-900
-                            "
-                        >
-                            1. Informations personnelles
-                        </h2>
+                            ">
+                                1. Informations personnelles
+                            </h2>
 
-                        <p
-                            class="
+                            <p
+                                class="
                                 mt-1
                                 text-sm
                                 text-gray-500
-                            "
-                        >
-                            Renseignez vos informations personnelles.
-                        </p>
+                            ">
+                                Renseignez vos informations personnelles.
+                            </p>
 
-                    </div>
+                        </div>
 
 
-                    {{-- Prénom / Nom --}}
+                        {{-- Prénom / Nom --}}
 
-                    <div
-                        class="
+                        <div
+                            class="
                             grid
                             grid-cols-1
                             sm:grid-cols-2
                             gap-5
-                        "
-                    >
+                        ">
 
-                        {{-- Prénom --}}
+                            {{-- Prénom --}}
 
-                        <div>
+                            <div>
 
-                            <label
-                                for="first_name"
-                                class="uhsas-label"
-                            >
-                                Prénom
-                                <span class="required-star">*</span>
-                            </label>
+                                <label for="first_name" class="uhsas-label">
+                                    Prénom
+                                    <span class="required-star">*</span>
+                                </label>
 
-                            <input
-                                id="first_name"
-                                type="text"
-                                name="first_name"
-                                value="{{ old('first_name') }}"
-                                required
-                                autocomplete="given-name"
-                                class="
+                                <input id="first_name" type="text" name="first_name" value="{{ old('first_name') }}"
+                                    required autocomplete="given-name"
+                                    class="
                                     uhsas-input
                                     @error('first_name')
                                         input-error
                                     @enderror
                                 "
-                                placeholder="Ex. Mamadou"
-                            >
+                                    placeholder="Ex. Mamadou">
 
-                            @error('first_name')
+                                @error('first_name')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
-
-                        </div>
+                            </div>
 
 
-                        {{-- Nom --}}
+                            {{-- Nom --}}
 
-                        <div>
+                            <div>
 
-                            <label
-                                for="last_name"
-                                class="uhsas-label"
-                            >
-                                Nom
-                                <span class="required-star">*</span>
-                            </label>
+                                <label for="last_name" class="uhsas-label">
+                                    Nom
+                                    <span class="required-star">*</span>
+                                </label>
 
-                            <input
-                                id="last_name"
-                                type="text"
-                                name="last_name"
-                                value="{{ old('last_name') }}"
-                                required
-                                autocomplete="family-name"
-                                class="
+                                <input id="last_name" type="text" name="last_name" value="{{ old('last_name') }}"
+                                    required autocomplete="family-name"
+                                    class="
                                     uhsas-input
                                     @error('last_name')
                                         input-error
                                     @enderror
                                 "
-                                placeholder="Ex. Diop"
-                            >
+                                    placeholder="Ex. Diop">
 
-                            @error('last_name')
+                                @error('last_name')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
+                            </div>
 
                         </div>
 
-                    </div>
 
+                        {{-- Téléphone / Email --}}
 
-                    {{-- Téléphone / Email --}}
-
-                    <div
-                        class="
+                        <div
+                            class="
                             grid
                             grid-cols-1
                             sm:grid-cols-2
                             gap-5
                             mt-5
-                        "
-                    >
+                        ">
 
-                        {{-- Téléphone --}}
+                            {{-- Téléphone --}}
 
-                        <div>
+                            <div>
 
-                            <label
-                                for="phone"
-                                class="uhsas-label"
-                            >
-                                Téléphone
-                                <span class="required-star">*</span>
-                            </label>
+                                <label for="phone" class="uhsas-label">
+                                    Téléphone
+                                    <span class="required-star">*</span>
+                                </label>
 
-                            <input
-                                id="phone"
-                                type="tel"
-                                name="phone"
-                                value="{{ old('phone') }}"
-                                required
-                                inputmode="tel"
-                                autocomplete="tel"
-                                class="
+                                <input id="phone" type="tel" name="phone" value="{{ old('phone') }}"
+                                    required inputmode="tel" autocomplete="tel"
+                                    class="
                                     uhsas-input
                                     @error('phone')
                                         input-error
                                     @enderror
                                 "
-                                placeholder="77 000 00 00"
-                            >
+                                    placeholder="77 000 00 00">
 
-                            @error('phone')
+                                @error('phone')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
-
-                        </div>
+                            </div>
 
 
-                        {{-- Email --}}
+                            {{-- Email --}}
 
-                        <div>
+                            <div>
 
-                            <label
-                                for="email"
-                                class="uhsas-label"
-                            >
+                                <label for="email" class="uhsas-label">
 
-                                Email
+                                    Email
 
-                                <span
-                                    class="
+                                    <span
+                                        class="
                                         text-gray-400
                                         font-normal
-                                    "
-                                >
-                                    (facultatif)
-                                </span>
+                                    ">
+                                        (facultatif)
+                                    </span>
 
-                            </label>
+                                </label>
 
-                            <input
-                                id="email"
-                                type="email"
-                                name="email"
-                                value="{{ old('email') }}"
-                                autocomplete="email"
-                                class="
+                                <input id="email" type="email" name="email" value="{{ old('email') }}"
+                                    autocomplete="email"
+                                    class="
                                     uhsas-input
                                     @error('email')
                                         input-error
                                     @enderror
                                 "
-                                placeholder="exemple@email.com"
-                            >
+                                    placeholder="exemple@email.com">
 
-                            @error('email')
+                                @error('email')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
+                            </div>
 
                         </div>
 
-                    </div>
 
+                        {{-- Date / Sexe --}}
 
-                    {{-- Date / Sexe --}}
-
-                    <div
-                        class="
+                        <div
+                            class="
                             grid
                             grid-cols-1
                             sm:grid-cols-2
                             gap-5
                             mt-5
-                        "
-                    >
+                        ">
 
-                        {{-- Date de naissance --}}
+                            {{-- Date de naissance --}}
 
-                        <div>
+                            <div>
 
-                            <label
-                                for="birth_date"
-                                class="uhsas-label"
-                            >
-                                Date de naissance
-                                <span class="required-star">*</span>
-                            </label>
+                                <label for="birth_date" class="uhsas-label">
+                                    Date de naissance
+                                    <span class="required-star">*</span>
+                                </label>
 
-                            <input
-                                id="birth_date"
-                                type="date"
-                                name="birth_date"
-                                value="{{ old('birth_date') }}"
-                                required
-                                class="
+                                <input id="birth_date" type="date" name="birth_date"
+                                    value="{{ old('birth_date') }}" required
+                                    class="
                                     uhsas-input
                                     @error('birth_date')
                                         input-error
                                     @enderror
-                                "
-                            >
+                                ">
 
-                            @error('birth_date')
+                                @error('birth_date')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
-
-                        </div>
+                            </div>
 
 
-                        {{-- Sexe --}}
+                            {{-- Sexe --}}
 
-                        <div>
+                            <div>
 
-                            <label
-                                for="gender"
-                                class="uhsas-label"
-                            >
-                                Sexe
-                                <span class="required-star">*</span>
-                            </label>
+                                <label for="gender" class="uhsas-label">
+                                    Sexe
+                                    <span class="required-star">*</span>
+                                </label>
 
-                            <select
-                                id="gender"
-                                name="gender"
-                                required
-                                class="
+                                <select id="gender" name="gender" required
+                                    class="
                                     uhsas-input
                                     @error('gender')
                                         input-error
                                     @enderror
-                                "
-                            >
+                                ">
 
-                                <option value="">
-                                    Sélectionner
-                                </option>
+                                    <option value="">
+                                        Sélectionner
+                                    </option>
 
-                                <option
-                                    value="male"
-                                    @selected(
-                                        old('gender') === 'male'
-                                    )
-                                >
-                                    Homme
-                                </option>
+                                    <option value="male" @selected(old('gender') === 'male')>
+                                        Homme
+                                    </option>
 
-                                <option
-                                    value="female"
-                                    @selected(
-                                        old('gender') === 'female'
-                                    )
-                                >
-                                    Femme
-                                </option>
+                                    <option value="female" @selected(old('gender') === 'female')>
+                                        Femme
+                                    </option>
 
-                                <option
-                                    value="other"
-                                    @selected(
-                                        old('gender') === 'other'
-                                    )
-                                >
-                                    Autre
-                                </option>
+                                    <option value="other" @selected(old('gender') === 'other')>
+                                        Autre
+                                    </option>
 
-                            </select>
+                                </select>
 
-                            @error('gender')
+                                @error('gender')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
+                            </div>
 
                         </div>
 
-                    </div>
-
-                </section>
+                    </section>
 
 
-                {{-- =================================================
+                    {{-- =================================================
                     PHOTO
                 ================================================== --}}
 
-                <section class="uhsas-section">
+                    <section class="uhsas-section">
 
-                    <div class="mb-5">
+                        <div class="mb-5">
 
-                        <h2
-                            class="
+                            <h2
+                                class="
                                 text-lg
                                 sm:text-xl
                                 font-bold
                                 text-gray-900
-                            "
-                        >
-                            2. Photo
-                        </h2>
+                            ">
+                                2. Photo
+                            </h2>
 
-                        <p
-                            class="
+                            <p
+                                class="
                                 mt-1
                                 text-sm
                                 text-gray-500
-                            "
-                        >
-                            Une photo claire du visage est nécessaire
-                            pour votre carte.
-                        </p>
+                            ">
+                                Une photo claire du visage est nécessaire
+                                pour votre carte.
+                            </p>
 
-                    </div>
+                        </div>
 
 
-                    <div class="photo-upload">
+                        <div class="photo-upload">
 
-                        <label
-                            for="photo"
-                            class="uhsas-label"
-                        >
+                            <label for="photo" class="uhsas-label">
 
-                            Photo du membre
+                                Photo du membre
 
-                            <span class="required-star">
-                                *
-                            </span>
+                                <span class="required-star">
+                                    *
+                                </span>
 
-                        </label>
+                            </label>
 
-                        <input
-                            id="photo"
-                            type="file"
-                            name="photo"
-                            accept="image/jpeg,image/png,image/webp"
-                            capture="user"
-                            required
-                            class="
+                            <input id="photo" type="file" name="photo"
+                                accept="image/jpeg,image/png,image/webp" capture="user" required
+                                class="
                                 block
                                 w-full
                                 text-sm
@@ -992,35 +931,27 @@
                                 file:text-sm
                                 file:font-semibold
                                 file:text-white
-                            "
-                        >
+                            ">
 
-                        <p
-                            class="
+                            <p
+                                class="
                                 mt-3
                                 text-xs
                                 text-gray-500
                                 leading-relaxed
-                            "
-                        >
-                            JPG, JPEG, PNG ou WEBP — maximum 5 Mo.
-                            Sur téléphone, vous pouvez directement
-                            prendre une photo.
-                        </p>
+                            ">
+                                JPG, JPEG, PNG ou WEBP — maximum 5 Mo.
+                                Sur téléphone, vous pouvez directement
+                                prendre une photo.
+                            </p>
 
 
-                        {{-- Preview --}}
+                            {{-- Preview --}}
 
-                        <div
-                            id="photoPreview"
-                            class="hidden mt-4"
-                        >
+                            <div id="photoPreview" class="hidden mt-4">
 
-                            <img
-                                id="previewImage"
-                                src=""
-                                alt="Aperçu"
-                                class="
+                                <img id="previewImage" src="" alt="Aperçu"
+                                    class="
                                     mx-auto
                                     h-32
                                     w-32
@@ -1029,368 +960,286 @@
                                     border-4
                                     border-white
                                     shadow
-                                "
-                            >
+                                ">
+
+                            </div>
 
                         </div>
 
-                    </div>
+
+                        @error('photo')
+                            <p class="field-error">
+                                {{ $message }}
+                            </p>
+                        @enderror
+
+                    </section>
 
 
-                    @error('photo')
-
-                        <p class="field-error">
-                            {{ $message }}
-                        </p>
-
-                    @enderror
-
-                </section>
-
-
-                {{-- =================================================
+                    {{-- =================================================
                     PROFESSION
                 ================================================== --}}
 
-                <section class="uhsas-section">
+                    <section class="uhsas-section">
 
-                    <div class="mb-5">
+                        <div class="mb-5">
 
-                        <h2
-                            class="
+                            <h2
+                                class="
                                 text-lg
                                 sm:text-xl
                                 font-bold
                                 text-gray-900
-                            "
-                        >
-                            3. Activité professionnelle
-                        </h2>
+                            ">
+                                3. Activité professionnelle
+                            </h2>
 
-                    </div>
+                        </div>
 
 
-                    <label
-                        for="profession_id"
-                        class="uhsas-label"
-                    >
-                        Profession / Métier
-                        <span class="required-star">*</span>
-                    </label>
+                        <label for="profession_id" class="uhsas-label">
+                            Profession / Métier
+                            <span class="required-star">*</span>
+                        </label>
 
-                    <select
-                        id="profession_id"
-                        name="profession_id"
-                        required
-                        class="
+                        <select id="profession_id" name="profession_id" required
+                            class="
                             uhsas-input
                             @error('profession_id')
                                 input-error
                             @enderror
-                        "
-                    >
+                        ">
 
-                        <option value="">
-                            Sélectionner votre métier
-                        </option>
-
-                        @foreach ($professions as $profession)
-
-                            <option
-                                value="{{ $profession->id }}"
-                                @selected(
-                                    old('profession_id')
-                                    == $profession->id
-                                )
-                            >
-                                {{ $profession->name }}
+                            <option value="">
+                                Sélectionner votre métier
                             </option>
 
-                        @endforeach
+                            @foreach ($professions as $profession)
+                                <option value="{{ $profession->id }}" @selected(old('profession_id') == $profession->id)>
+                                    {{ $profession->name }}
+                                </option>
+                            @endforeach
 
-                    </select>
+                        </select>
 
-                    @error('profession_id')
+                        @error('profession_id')
+                            <p class="field-error">
+                                {{ $message }}
+                            </p>
+                        @enderror
 
-                        <p class="field-error">
-                            {{ $message }}
-                        </p>
-
-                    @enderror
-
-                </section>
+                    </section>
 
 
-                {{-- =================================================
+                    {{-- =================================================
                     LOCALISATION
                 ================================================== --}}
 
-                <section class="uhsas-section">
+                    <section class="uhsas-section">
 
-                    <div class="mb-5">
+                        <div class="mb-5">
 
-                        <h2
-                            class="
+                            <h2
+                                class="
                                 text-lg
                                 sm:text-xl
                                 font-bold
                                 text-gray-900
-                            "
-                        >
-                            4. Localisation
-                        </h2>
+                            ">
+                                4. Localisation
+                            </h2>
 
-                        <p
-                            class="
+                            <p
+                                class="
                                 mt-1
                                 text-sm
                                 text-gray-500
-                            "
-                        >
-                            Indiquez votre lieu de résidence.
-                        </p>
+                            ">
+                                Indiquez votre lieu de résidence.
+                            </p>
 
-                    </div>
-
-
-                    <div class="space-y-5">
+                        </div>
 
 
-                        {{-- Région --}}
+                        <div class="space-y-5">
 
-                        <div>
 
-                            <label
-                                for="region_id"
-                                class="uhsas-label"
-                            >
-                                Région
-                                <span class="required-star">*</span>
-                            </label>
+                            {{-- Région --}}
 
-                            <select
-                                id="region_id"
-                                name="region_id"
-                                required
-                                class="
+                            <div>
+
+                                <label for="region_id" class="uhsas-label">
+                                    Région
+                                    <span class="required-star">*</span>
+                                </label>
+
+                                <select id="region_id" name="region_id" required
+                                    class="
                                     uhsas-input
                                     @error('region_id')
                                         input-error
                                     @enderror
-                                "
-                            >
+                                ">
 
-                                <option value="">
-                                    Sélectionner une région
-                                </option>
-
-                                @foreach ($regions as $region)
-
-                                    <option
-                                        value="{{ $region->id }}"
-                                        @selected(
-                                            old('region_id')
-                                            == $region->id
-                                        )
-                                    >
-                                        {{ $region->name }}
+                                    <option value="">
+                                        Sélectionner une région
                                     </option>
 
-                                @endforeach
+                                    @foreach ($regions as $region)
+                                        <option value="{{ $region->id }}" @selected(old('region_id') == $region->id)>
+                                            {{ $region->name }}
+                                        </option>
+                                    @endforeach
 
-                            </select>
+                                </select>
 
-                            @error('region_id')
+                                @error('region_id')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
-
-                        </div>
+                            </div>
 
 
-                        {{-- Département --}}
+                            {{-- Département --}}
 
-                        <div>
+                            <div>
 
-                            <label
-                                for="department_id"
-                                class="uhsas-label"
-                            >
-                                Département
-                                <span class="required-star">*</span>
-                            </label>
+                                <label for="department_id" class="uhsas-label">
+                                    Département
+                                    <span class="required-star">*</span>
+                                </label>
 
-                            <select
-                                id="department_id"
-                                name="department_id"
-                                required
-                                disabled
-                                class="
+                                <select id="department_id" name="department_id" required disabled
+                                    class="
                                     uhsas-input
                                     @error('department_id')
                                         input-error
                                     @enderror
-                                "
-                            >
+                                ">
 
-                                <option value="">
-                                    Sélectionner d'abord la région
-                                </option>
+                                    <option value="">
+                                        Sélectionner d'abord la région
+                                    </option>
 
-                            </select>
+                                </select>
 
-                            @error('department_id')
+                                @error('department_id')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
-
-                        </div>
+                            </div>
 
 
-                        {{-- =================================================
+                            {{-- =================================================
                             COMMUNE D'ARRONDISSEMENT
                         ================================================== --}}
 
-                        <div
-                            id="commune-container"
-                            class="hidden"
-                        >
+                            <div id="commune-container" class="hidden">
 
-                            <label
-                                for="commune_id"
-                                class="uhsas-label"
-                            >
+                                <label for="commune_id" class="uhsas-label">
 
-                                Commune d'arrondissement
+                                    Commune d'arrondissement
 
-                                <span
-                                    class="
+                                    <span
+                                        class="
                                         text-gray-400
                                         font-normal
-                                    "
-                                >
-                                    (facultatif)
-                                </span>
+                                    ">
+                                        (facultatif)
+                                    </span>
 
-                            </label>
+                                </label>
 
-                            <select
-                                id="commune_id"
-                                name="commune_id"
-                                disabled
-                                class="
+                                <select id="commune_id" name="commune_id" disabled
+                                    class="
                                     uhsas-input
                                     @error('commune_id')
                                         input-error
                                     @enderror
-                                "
-                            >
+                                ">
 
-                                <option value="">
-                                    Sélectionner une commune
-                                </option>
+                                    <option value="">
+                                        Sélectionner une commune
+                                    </option>
 
-                            </select>
+                                </select>
 
-                            @error('commune_id')
+                                @error('commune_id')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
-
-                        </div>
+                            </div>
 
 
-                        {{-- Adresse --}}
+                            {{-- Adresse --}}
 
-                        <div>
+                            <div>
 
-                            <label
-                                for="address"
-                                class="uhsas-label"
-                            >
+                                <label for="address" class="uhsas-label">
 
-                                Adresse / Localité
+                                    Adresse / Localité
 
-                                <span class="required-star">
-                                    *
-                                </span>
+                                    <span class="required-star">
+                                        *
+                                    </span>
 
-                            </label>
+                                </label>
 
-                            <textarea
-                                id="address"
-                                name="address"
-                                rows="3"
-                                required
-                                autocomplete="street-address"
-                                class="
+                                <textarea id="address" name="address" rows="3" required autocomplete="street-address"
+                                    class="
                                     uhsas-input
                                     resize-none
                                     @error('address')
                                         input-error
                                     @enderror
                                 "
-                                placeholder="Ex. Unité 15, Parcelles Assainies..."
-                            >{{ old('address') }}</textarea>
+                                    placeholder="Ex. Unité 15, Parcelles Assainies...">{{ old('address') }}</textarea>
 
-                            @error('address')
+                                @error('address')
+                                    <p class="field-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
-                                <p class="field-error">
-                                    {{ $message }}
-                                </p>
-
-                            @enderror
+                            </div>
 
                         </div>
 
-                    </div>
-
-                </section>
+                    </section>
 
 
-                {{-- =================================================
+                    {{-- =================================================
                     CONFIRMATION
                 ================================================== --}}
 
-                <section>
+                    <section>
 
-                    <div
-                        class="
+                        <div
+                            class="
                             rounded-xl
                             bg-green-50
                             border
                             border-green-100
                             p-4
-                        "
-                    >
+                        ">
 
-                        <label
-                            for="terms"
-                            class="
+                            <label for="terms"
+                                class="
                                 flex
                                 items-start
                                 gap-3
                                 cursor-pointer
-                            "
-                        >
+                            ">
 
-                            <input
-                                id="terms"
-                                type="checkbox"
-                                name="terms"
-                                value="1"
-                                required
-                                @checked(old('terms'))
-                                class="
+                                <input id="terms" type="checkbox" name="terms" value="1" required
+                                    @checked(old('terms'))
+                                    class="
                                     mt-1
                                     h-5
                                     w-5
@@ -1398,51 +1247,45 @@
                                     rounded
                                     border-gray-300
                                     text-green-700
-                                "
-                            >
+                                ">
 
-                            <span
-                                class="
+                                <span
+                                    class="
                                     text-sm
                                     text-gray-700
                                     leading-relaxed
-                                "
-                            >
+                                ">
 
-                                Je confirme que les informations
-                                fournies sont exactes et j'accepte
-                                leur utilisation dans le cadre de
-                                mon inscription à l'UHSAS.
+                                    Je confirme que les informations
+                                    fournies sont exactes et j'accepte
+                                    leur utilisation dans le cadre de
+                                    mon inscription à l'UHSAS.
 
-                                <span class="required-star">*</span>
+                                    <span class="required-star">*</span>
 
-                            </span>
+                                </span>
 
-                        </label>
+                            </label>
 
-                        @error('terms')
+                            @error('terms')
+                                <p class="field-error">
+                                    {{ $message }}
+                                </p>
+                            @enderror
 
-                            <p class="field-error">
-                                {{ $message }}
-                            </p>
+                        </div>
 
-                        @enderror
-
-                    </div>
-
-                </section>
+                    </section>
 
 
-                {{-- =================================================
+                    {{-- =================================================
                     BOUTON
                 ================================================== --}}
 
-                <div class="mobile-safe-bottom">
+                    <div class="mobile-safe-bottom">
 
-                    <button
-                        type="submit"
-                        id="submitButton"
-                        class="
+                        <button type="submit" id="submitButton"
+                            class="
                             w-full
                             min-h-[54px]
                             rounded-xl
@@ -1458,519 +1301,510 @@
                             active:scale-[0.99]
                             transition
                             duration-150
-                        "
-                    >
+                        ">
 
-                        <span id="submitText">
-                            Envoyer mon inscription
-                        </span>
+                            <span id="submitText">
+                                Envoyer mon inscription
+                            </span>
 
-                    </button>
+                        </button>
 
-                    <p
-                        class="
+                        <p
+                            class="
                             mt-3
                             text-center
                             text-xs
                             text-gray-500
-                        "
-                    >
-                        Les champs marqués d'un
-                        <span class="text-red-600 font-bold">*</span>
-                        sont obligatoires.
-                    </p>
+                        ">
+                            Les champs marqués d'un
+                            <span class="text-red-600 font-bold">*</span>
+                            sont obligatoires.
+                        </p>
 
-                </div>
+                    </div>
 
-            </form>
+                </form>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
 
-
-{{-- ================================================================
+    {{-- ================================================================
     JAVASCRIPT
 ================================================================ --}}
 
-<script>
-
-document.addEventListener('DOMContentLoaded', () => {
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Éléments
-    |--------------------------------------------------------------------------
-    */
-
-    const regionSelect =
-        document.getElementById('region_id');
-
-    const departmentSelect =
-        document.getElementById('department_id');
-
-    const communeContainer =
-        document.getElementById('commune-container');
-
-    const communeSelect =
-        document.getElementById('commune_id');
-
-    const photoInput =
-        document.getElementById('photo');
-
-    const photoPreview =
-        document.getElementById('photoPreview');
-
-    const previewImage =
-        document.getElementById('previewImage');
-
-    const form =
-        document.querySelector('.uhsas-form');
-
-    const submitButton =
-        document.getElementById('submitButton');
-
-    const submitText =
-        document.getElementById('submitText');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Anciennes valeurs Laravel
-    |--------------------------------------------------------------------------
-    */
+            /*
+            |--------------------------------------------------------------------------
+            | Éléments
+            |--------------------------------------------------------------------------
+            */
 
-    const oldDepartmentId =
-        @json(old('department_id'));
+            const regionSelect =
+                document.getElementById('region_id');
 
-    const oldCommuneId =
-        @json(old('commune_id'));
+            const departmentSelect =
+                document.getElementById('department_id');
+
+            const communeContainer =
+                document.getElementById('commune-container');
+
+            const communeSelect =
+                document.getElementById('commune_id');
+
+            const photoInput =
+                document.getElementById('photo');
+
+            const photoPreview =
+                document.getElementById('photoPreview');
+
+            const previewImage =
+                document.getElementById('previewImage');
+
+            const form =
+                document.querySelector('.uhsas-form');
+
+            const submitButton =
+                document.getElementById('submitButton');
+
+            const submitText =
+                document.getElementById('submitText');
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Afficher / masquer la commune
-    |--------------------------------------------------------------------------
-    */
+            /*
+            |--------------------------------------------------------------------------
+            | Anciennes valeurs Laravel
+            |--------------------------------------------------------------------------
+            */
 
-    function hideCommune() {
+            const oldDepartmentId =
+                @json(old('department_id'));
 
-        communeContainer.classList.add('hidden');
+            const oldCommuneId =
+                @json(old('commune_id'));
 
-        communeSelect.disabled = true;
 
-        communeSelect.required = false;
+            /*
+            |--------------------------------------------------------------------------
+            | Afficher / masquer la commune
+            |--------------------------------------------------------------------------
+            */
 
-        communeSelect.innerHTML = `
+            function hideCommune() {
+
+                communeContainer.classList.add('hidden');
+
+                communeSelect.disabled = true;
+
+                communeSelect.required = false;
+
+                communeSelect.innerHTML = `
             <option value="">
                 Sélectionner une commune
             </option>
         `;
 
-        communeSelect.value = '';
-    }
-
-
-    function showCommune() {
-
-        communeContainer.classList.remove('hidden');
-
-        communeSelect.disabled = false;
-
-        /*
-         * Important :
-         * la commune reste facultative.
-         */
-        communeSelect.required = false;
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Chargement des communes
-    |--------------------------------------------------------------------------
-    */
-
-    async function loadCommunes(
-        departmentId,
-        selectedCommuneId = null
-    ) {
-
-        hideCommune();
-
-        if (!departmentId) {
-
-            return;
-        }
-
-
-        try {
-
-            const response = await fetch(
-                `/api/departments/${departmentId}/communes`,
-                {
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                }
-            );
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    'Impossible de charger les communes.'
-                );
+                communeSelect.value = '';
             }
 
 
-            const communes =
-                await response.json();
+            function showCommune() {
+
+                communeContainer.classList.remove('hidden');
+
+                communeSelect.disabled = false;
+
+                /*
+                 * Important :
+                 * la commune reste facultative.
+                 */
+                communeSelect.required = false;
+            }
 
 
             /*
-             * Aucun commune disponible :
-             * on cache complètement le champ.
-             */
+            |--------------------------------------------------------------------------
+            | Chargement des communes
+            |--------------------------------------------------------------------------
+            */
 
-            if (
-                !Array.isArray(communes)
-                ||
-                communes.length === 0
+            async function loadCommunes(
+                departmentId,
+                selectedCommuneId = null
             ) {
 
                 hideCommune();
 
-                return;
-            }
+                if (!departmentId) {
+
+                    return;
+                }
 
 
-            /*
-             * Des communes existent :
-             * on affiche le champ.
-             */
+                try {
 
-            showCommune();
+                    const response = await fetch(
+                        `/api/departments/${departmentId}/communes`, {
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        }
+                    );
 
 
-            communeSelect.innerHTML = `
+                    if (!response.ok) {
+
+                        throw new Error(
+                            'Impossible de charger les communes.'
+                        );
+                    }
+
+
+                    const communes =
+                        await response.json();
+
+
+                    /*
+                     * Aucun commune disponible :
+                     * on cache complètement le champ.
+                     */
+
+                    if (
+                        !Array.isArray(communes) ||
+                        communes.length === 0
+                    ) {
+
+                        hideCommune();
+
+                        return;
+                    }
+
+
+                    /*
+                     * Des communes existent :
+                     * on affiche le champ.
+                     */
+
+                    showCommune();
+
+
+                    communeSelect.innerHTML = `
                 <option value="">
                     Sélectionner une commune
                 </option>
             `;
 
 
-            communes.forEach(commune => {
+                    communes.forEach(commune => {
 
-                const option =
-                    document.createElement('option');
+                        const option =
+                            document.createElement('option');
 
-                option.value =
-                    commune.id;
+                        option.value =
+                            commune.id;
 
-                option.textContent =
-                    commune.name;
+                        option.textContent =
+                            commune.name;
 
 
-                if (
-                    selectedCommuneId
-                    &&
-                    String(commune.id)
-                    === String(selectedCommuneId)
-                ) {
+                        if (
+                            selectedCommuneId &&
+                            String(commune.id) ===
+                            String(selectedCommuneId)
+                        ) {
 
-                    option.selected = true;
+                            option.selected = true;
+                        }
+
+
+                        communeSelect.appendChild(option);
+
+                    });
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    /*
+                     * En cas de problème technique,
+                     * on masque le champ plutôt que
+                     * de bloquer l'utilisateur.
+                     */
+
+                    hideCommune();
                 }
+            }
 
-
-                communeSelect.appendChild(option);
-
-            });
-
-
-        } catch (error) {
-
-            console.error(error);
 
             /*
-             * En cas de problème technique,
-             * on masque le champ plutôt que
-             * de bloquer l'utilisateur.
-             */
+            |--------------------------------------------------------------------------
+            | Chargement des départements
+            |--------------------------------------------------------------------------
+            */
 
-            hideCommune();
-        }
-    }
+            async function loadDepartments(
+                regionId,
+                selectedDepartmentId = null
+            ) {
 
+                departmentSelect.disabled = true;
 
-    /*
-    |--------------------------------------------------------------------------
-    | Chargement des départements
-    |--------------------------------------------------------------------------
-    */
-
-    async function loadDepartments(
-        regionId,
-        selectedDepartmentId = null
-    ) {
-
-        departmentSelect.disabled = true;
-
-        hideCommune();
+                hideCommune();
 
 
-        departmentSelect.innerHTML = `
+                departmentSelect.innerHTML = `
             <option value="">
                 Chargement des départements...
             </option>
         `;
 
 
-        if (!regionId) {
+                if (!regionId) {
 
-            departmentSelect.innerHTML = `
+                    departmentSelect.innerHTML = `
                 <option value="">
                     Sélectionner d'abord la région
                 </option>
             `;
 
-            return;
-        }
-
-
-        try {
-
-            const response = await fetch(
-                `/api/regions/${regionId}/departments`,
-                {
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    return;
                 }
-            );
 
 
-            if (!response.ok) {
+                try {
 
-                throw new Error(
-                    'Impossible de charger les départements.'
-                );
-            }
+                    const response = await fetch(
+                        `/api/regions/${regionId}/departments`, {
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        }
+                    );
 
 
-            const departments =
-                await response.json();
+                    if (!response.ok) {
+
+                        throw new Error(
+                            'Impossible de charger les départements.'
+                        );
+                    }
 
 
-            departmentSelect.innerHTML = `
+                    const departments =
+                        await response.json();
+
+
+                    departmentSelect.innerHTML = `
                 <option value="">
                     Sélectionner un département
                 </option>
             `;
 
 
-            departments.forEach(department => {
+                    departments.forEach(department => {
 
-                const option =
-                    document.createElement('option');
+                        const option =
+                            document.createElement('option');
 
-                option.value =
-                    department.id;
+                        option.value =
+                            department.id;
 
-                option.textContent =
-                    department.name;
-
-
-                if (
-                    selectedDepartmentId
-                    &&
-                    String(department.id)
-                    === String(selectedDepartmentId)
-                ) {
-
-                    option.selected = true;
-                }
+                        option.textContent =
+                            department.name;
 
 
-                departmentSelect.appendChild(option);
+                        if (
+                            selectedDepartmentId &&
+                            String(department.id) ===
+                            String(selectedDepartmentId)
+                        ) {
 
-            });
-
-
-            departmentSelect.disabled = false;
-
-
-            /*
-             * Si Laravel avait déjà une ancienne valeur,
-             * on charge automatiquement ses communes.
-             */
-
-            if (selectedDepartmentId) {
-
-                await loadCommunes(
-                    selectedDepartmentId,
-                    oldCommuneId
-                );
-            }
+                            option.selected = true;
+                        }
 
 
-        } catch (error) {
+                        departmentSelect.appendChild(option);
 
-            console.error(error);
+                    });
 
-            departmentSelect.innerHTML = `
+
+                    departmentSelect.disabled = false;
+
+
+                    /*
+                     * Si Laravel avait déjà une ancienne valeur,
+                     * on charge automatiquement ses communes.
+                     */
+
+                    if (selectedDepartmentId) {
+
+                        await loadCommunes(
+                            selectedDepartmentId,
+                            oldCommuneId
+                        );
+                    }
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    departmentSelect.innerHTML = `
                 <option value="">
                     Impossible de charger les départements
                 </option>
             `;
 
-            departmentSelect.disabled = true;
-        }
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Changement de région
-    |--------------------------------------------------------------------------
-    */
-
-    regionSelect.addEventListener(
-        'change',
-        async () => {
-
-            await loadDepartments(
-                regionSelect.value
-            );
-        }
-    );
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Changement de département
-    |--------------------------------------------------------------------------
-    */
-
-    departmentSelect.addEventListener(
-        'change',
-        async () => {
-
-            await loadCommunes(
-                departmentSelect.value
-            );
-        }
-    );
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Initialisation après erreur Laravel
-    |--------------------------------------------------------------------------
-    */
-
-    const oldRegionId =
-        @json(old('region_id'));
-
-
-    if (oldRegionId) {
-
-        regionSelect.value =
-            oldRegionId;
-
-
-        loadDepartments(
-            oldRegionId,
-            oldDepartmentId
-        );
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Prévisualisation photo
-    |--------------------------------------------------------------------------
-    */
-
-    if (photoInput) {
-
-        photoInput.addEventListener(
-            'change',
-            () => {
-
-                const file =
-                    photoInput.files[0];
-
-
-                if (!file) {
-
-                    photoPreview.classList.add(
-                        'hidden'
-                    );
-
-                    return;
+                    departmentSelect.disabled = true;
                 }
+            }
 
 
-                if (!file.type.startsWith('image/')) {
+            /*
+            |--------------------------------------------------------------------------
+            | Changement de région
+            |--------------------------------------------------------------------------
+            */
 
-                    photoPreview.classList.add(
-                        'hidden'
+            regionSelect.addEventListener(
+                'change',
+                async () => {
+
+                    await loadDepartments(
+                        regionSelect.value
                     );
-
-                    return;
                 }
+            );
 
 
-                const reader =
-                    new FileReader();
+            /*
+            |--------------------------------------------------------------------------
+            | Changement de département
+            |--------------------------------------------------------------------------
+            */
+
+            departmentSelect.addEventListener(
+                'change',
+                async () => {
+
+                    await loadCommunes(
+                        departmentSelect.value
+                    );
+                }
+            );
 
 
-                reader.onload =
-                    (event) => {
+            /*
+            |--------------------------------------------------------------------------
+            | Initialisation après erreur Laravel
+            |--------------------------------------------------------------------------
+            */
 
-                        previewImage.src =
-                            event.target.result;
-
-                        photoPreview.classList.remove(
-                            'hidden'
-                        );
-                    };
+            const oldRegionId =
+                @json(old('region_id'));
 
 
-                reader.readAsDataURL(file);
+            if (oldRegionId) {
+
+                regionSelect.value =
+                    oldRegionId;
+
+
+                loadDepartments(
+                    oldRegionId,
+                    oldDepartmentId
+                );
             }
-        );
-    }
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Protection contre double soumission
-    |--------------------------------------------------------------------------
-    */
+            /*
+            |--------------------------------------------------------------------------
+            | Prévisualisation photo
+            |--------------------------------------------------------------------------
+            */
 
-    if (form) {
+            if (photoInput) {
 
-        form.addEventListener(
-            'submit',
-            () => {
+                photoInput.addEventListener(
+                    'change',
+                    () => {
 
-                submitButton.disabled = true;
+                        const file =
+                            photoInput.files[0];
 
-                submitText.textContent =
-                    'Envoi en cours...';
 
+                        if (!file) {
+
+                            photoPreview.classList.add(
+                                'hidden'
+                            );
+
+                            return;
+                        }
+
+
+                        if (!file.type.startsWith('image/')) {
+
+                            photoPreview.classList.add(
+                                'hidden'
+                            );
+
+                            return;
+                        }
+
+
+                        const reader =
+                            new FileReader();
+
+
+                        reader.onload =
+                            (event) => {
+
+                                previewImage.src =
+                                    event.target.result;
+
+                                photoPreview.classList.remove(
+                                    'hidden'
+                                );
+                            };
+
+
+                        reader.readAsDataURL(file);
+                    }
+                );
             }
-        );
-    }
 
-});
 
-</script>
+            /*
+            |--------------------------------------------------------------------------
+            | Protection contre double soumission
+            |--------------------------------------------------------------------------
+            */
+
+            if (form) {
+
+                form.addEventListener(
+                    'submit',
+                    () => {
+
+                        submitButton.disabled = true;
+
+                        submitText.textContent =
+                            'Envoi en cours...';
+
+                    }
+                );
+            }
+
+        });
+    </script>
 
 </body>
 

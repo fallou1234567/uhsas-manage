@@ -17,9 +17,9 @@ return new class extends Migration
             ->constrained()
             ->cascadeOnDelete();
 
-            $table->foreignId('contribution_type_id')
-                ->constrained()
-                ->restrictOnDelete();
+            // $table->foreignId('contribution_type_id')
+            //     ->constrained()
+            //     ->restrictOnDelete();
 
             $table->decimal('amount', 12, 2);
 
