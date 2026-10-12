@@ -157,28 +157,43 @@
         |--------------------------------------------------------------------------
         */
 
-        .membership-card {
-
+        #membership-card {
             position: relative;
-
             width: 100%;
-
-            aspect-ratio:
-                85.6 / 53.98;
-
+            max-width: 900px;
+            height: auto;
+            min-height: 540px;
             overflow: hidden;
-
-            border-radius: 15px;
-
-            background:
-                linear-gradient(135deg,
-                    #f9f8f2 0%,
-                    #ffffff 55%,
-                    #f2efe5 100%);
-
-            color: #176b3a;
+            box-sizing: border-box;
         }
 
+        #membership-card * {
+            box-sizing: border-box;
+        }
+
+        #membership-card .member-info {
+            min-width: 0;
+            overflow: visible;
+        }
+
+        #membership-card .info-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+            overflow: visible;
+            margin-bottom: 18px;
+        }
+
+        #membership-card .info-row span,
+        #membership-card .info-row strong {
+            display: inline-block;
+            max-width: 100%;
+            overflow: visible;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            line-height: 1.4;
+        }
 
         /*
         |--------------------------------------------------------------------------
@@ -875,7 +890,7 @@
             display: grid;
 
             grid-template-columns:
-                repeat(4, 1fr);
+                repeat(2, 1fr);
 
             gap: 10px;
 
@@ -1472,6 +1487,7 @@
 
 
     <div class="success-page">
+        <h1>option 2</h1>
 
         <main class="success-container">
 
@@ -1935,7 +1951,7 @@
             <div class="actions">
 
                 {{-- PDF --}}
-                <a href="{{ route('registration.card.pdf', $member) }}" class="action-button"
+                {{-- <a href="{{ route('registration.card.pdf', $member) }}" class="action-button"
                     data-label="Télécharger PDF" aria-label="Télécharger la carte en PDF">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1943,7 +1959,7 @@
                         <path d="m7 10 5 5 5-5" />
                         <path d="M5 21h14" />
                     </svg>
-                </a>
+                </a> --}}
 
 
                 {{-- PARTAGER --}}
@@ -1974,7 +1990,7 @@
 
 
                 {{-- IMPRIMER --}}
-                <button type="button" id="printButton" class="action-button" data-label="Imprimer"
+                {{-- <button type="button" id="printButton" class="action-button" data-label="Imprimer"
                     aria-label="Imprimer la carte">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1982,7 +1998,7 @@
                         <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
                         <path d="M6 14h12v7H6z" />
                     </svg>
-                </button>
+                </button> --}}
 
             </div>
 
@@ -2004,264 +2020,179 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        /**
+         * ENREGISTRER LA CARTE UHSAS EN IMAGE
+         */
+        const saveButton = document.getElementById('saveButton');
 
-            /*
-            |--------------------------------------------------------------------------
-            | WHATSAPP / PARTAGE
-            |--------------------------------------------------------------------------
-            */
+        if (saveButton) {
+            saveButton.addEventListener('click', async () => {
+                const card = document.getElementById('membership-card');
 
-            const whatsappButton =
-                document.getElementById(
-                    'whatsappButton'
-                );
+                if (!card) {
+                    alert('Carte de membre introuvable.');
+                    return;
+                }
 
+                const originalContent = saveButton.innerHTML;
 
-            if (whatsappButton) {
+                saveButton.disabled = true;
+                saveButton.style.opacity = '0.6';
 
-                whatsappButton.addEventListener(
-                    'click',
-                    async () => {
-
-                        const cardUrl =
-                            @json(route('member.public', $member));
-
-
-                        const message =
-                            `Bonjour, voici ma carte de membre UHSAS : ${cardUrl}`;
-
-
-                        /*
-                         * Partage natif sur téléphone.
-                         */
-
-                        if (
-                            navigator.share
-                        ) {
-
-                            try {
-
-                                await navigator.share({
-
-                                    title: 'Carte de membre UHSAS',
-
-                                    text: message,
-
-                                    url: cardUrl
-
-                                });
-
-                                return;
-
-                            } catch (error) {
-
-                                // Annulation du partage.
-                            }
-                        }
-
-
-                        /*
-                         * Fallback WhatsApp.
-                         */
-
-                        window.open(
-                            `https://wa.me/?text=${
-                        encodeURIComponent(message)
-                    }`,
-                            '_blank'
-                        );
-
+                try {
+                    // Charger html2canvas si nécessaire
+                    if (typeof window.html2canvas !== 'function') {
+                        await loadHtml2Canvas();
                     }
-                );
-            }
 
+                    // Attendre que les images de la carte soient chargées
+                    const images = Array.from(card.querySelectorAll('img'));
 
-            /*
-            |--------------------------------------------------------------------------
-            | IMPRESSION
-            |--------------------------------------------------------------------------
-            */
-
-            const printButton =
-                document.getElementById(
-                    'printButton'
-                );
-
-
-            if (printButton) {
-
-                printButton.addEventListener(
-                    'click',
-                    () => {
-
-                        window.print();
-
-                    }
-                );
-            }
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | ENREGISTRER EN IMAGE
-            |--------------------------------------------------------------------------
-            */
-
-            const saveButton =
-                document.getElementById(
-                    'saveButton'
-                );
-
-
-            if (saveButton) {
-
-                saveButton.addEventListener(
-                    'click',
-                    async () => {
-
-                        const card =
-                            document.getElementById(
-                                'membership-card'
-                            );
-
-
-                        saveButton.disabled = true;
-
-
-                        try {
-
-                            if (
-                                typeof html2canvas ===
-                                'undefined'
-                            ) {
-
-                                await loadHtml2Canvas();
-
+                    await Promise.all(
+                        images.map((img) => {
+                            if (img.complete && img.naturalWidth > 0) {
+                                return Promise.resolve();
                             }
 
-
-                            const canvas =
-                                await html2canvas(card, {
-
-                                    scale: 4,
-
-                                    useCORS: true,
-
-                                    allowTaint: false,
-
-                                    backgroundColor: '#ffffff',
-
-                                    logging: false,
-
-                                    imageTimeout: 15000,
-
+                            return new Promise((resolve) => {
+                                img.addEventListener('load', resolve, {
+                                    once: true
+                                });
+                                img.addEventListener('error', resolve, {
+                                    once: true
                                 });
 
+                                // Éviter une attente infinie
+                                setTimeout(resolve, 10000);
+                            });
+                        })
+                    );
 
-                            canvas.toBlob(
-                                (blob) => {
+                    // Laisser le navigateur terminer le rendu
+                    await new Promise((resolve) =>
+                        requestAnimationFrame(() =>
+                            requestAnimationFrame(resolve)
+                        )
+                    );
 
-                                    if (!blob) {
-                                        return;
-                                    }
-
-
-                                    const url =
-                                        URL.createObjectURL(
-                                            blob
-                                        );
-
-
-                                    const link =
-                                        document.createElement(
-                                            'a'
-                                        );
-
-
-                                    link.href = url;
-
-                                    link.download =
-                                        `Carte-UHSAS-${@json($member->member_number)}.jpg`;
-
-
-                                    document.body.appendChild(
-                                        link
-                                    );
+                    const canvas = await html2canvas(card, {
+                        scale: 3,
+                        useCORS: true,
+                        allowTaint: false,
+                        backgroundColor: '#ffffff',
+                        logging: true,
+                        scrollX: 0,
+                        scrollY: 0,
+                        windowWidth: card.scrollWidth,
+                        windowHeight: card.scrollHeight
+                    });
 
 
-                                    link.click();
 
-
-                                    link.remove();
-
-
-                                    URL.revokeObjectURL(
-                                        url
-                                    );
-
-                                },
-                                'image/jpeg',
-                                0.95
-                            );
-
-
-                        } catch (error) {
-
-                            console.error(error);
-
-                            alert(
-                                "Impossible d'enregistrer la carte. Utilisez le bouton PDF."
-                            );
-
-                        } finally {
-
-                            saveButton.disabled = false;
-
-                        }
-
-                    }
-                );
-            }
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | CHARGEMENT HTML2CANVAS
-            |--------------------------------------------------------------------------
-            */
-
-            function loadHtml2Canvas() {
-
-                return new Promise(
-                    (resolve, reject) => {
-
-                        const script =
-                            document.createElement(
-                                'script'
-                            );
-
-
-                        script.src =
-                            'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
-
-
-                        script.onload =
-                            resolve;
-
-                        script.onerror =
-                            reject;
-
-
-                        document.head.appendChild(
-                            script
+                    const blob = await new Promise((resolve, reject) => {
+                        canvas.toBlob(
+                            (result) => {
+                                if (result) {
+                                    resolve(result);
+                                } else {
+                                    reject(new Error('Création de l’image impossible.'));
+                                }
+                            },
+                            'image/png'
                         );
+                    });
 
+                    const fileName =
+                        `Carte-UHSAS-${@json($member->member_number)}.png`;
+
+                    const imageFile = new File([blob], fileName, {
+                        type: 'image/png'
+                    });
+
+                    // Sur les mobiles compatibles, ouvrir le partage natif
+                    if (
+                        navigator.share &&
+                        navigator.canShare &&
+                        navigator.canShare({
+                            files: [imageFile]
+                        })
+                    ) {
+                        await navigator.share({
+                            title: 'Carte de membre UHSAS',
+                            text: 'Ma carte de membre UHSAS',
+                            files: [imageFile]
+                        });
+
+                        return;
                     }
-                );
+
+                    // Sinon, télécharger l’image
+                    const imageUrl = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+
+                    link.href = imageUrl;
+                    link.download = fileName;
+                    link.style.display = 'none';
+
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+
+                    // Libérer l’URL après un délai pour laisser le navigateur agir
+                    setTimeout(() => URL.revokeObjectURL(imageUrl), 2000);
+
+                } catch (error) {
+                    if (error.name !== 'AbortError') {
+                        console.error('Erreur lors de la capture :', error);
+
+                        alert(
+                            "Impossible d'enregistrer la carte. " +
+                            "Essayez avec un autre navigateur ou vérifiez votre connexion."
+                        );
+                    }
+                } finally {
+                    saveButton.disabled = false;
+                    saveButton.style.opacity = '1';
+                    saveButton.innerHTML = originalContent;
+                }
+            });
+        }
+
+        /**
+         * Chargement unique de html2canvas
+         */
+        function loadHtml2Canvas() {
+            if (typeof window.html2canvas === 'function') {
+                return Promise.resolve();
             }
 
-        });
+            if (window.html2CanvasLoading) {
+                return window.html2CanvasLoading;
+            }
+
+            window.html2CanvasLoading = new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+
+                script.src =
+                    'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+
+                script.onload = () => {
+                    if (typeof window.html2canvas === 'function') {
+                        resolve();
+                    } else {
+                        reject(new Error('html2canvas n’a pas pu être initialisé.'));
+                    }
+                };
+
+                script.onerror = () => {
+                    reject(new Error('Impossible de charger html2canvas.'));
+                };
+
+                document.head.appendChild(script);
+            });
+
+            return window.html2CanvasLoading;
+        }
     </script>
 
 

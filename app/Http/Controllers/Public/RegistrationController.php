@@ -456,7 +456,7 @@ public function success(Member $member)
     ]);
 
     return view(
-        'public.registration-success',
+        'public.registration-success11',
         compact('member')
     );
 }
