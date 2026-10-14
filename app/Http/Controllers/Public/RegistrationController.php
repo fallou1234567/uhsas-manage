@@ -456,7 +456,8 @@ public function success(Member $member)
     ]);
 
     return view(
-        'public.registration-success11',
+        // 'public.registration-success',
+        'public.registration_success_uhsas',
         compact('member')
     );
 }

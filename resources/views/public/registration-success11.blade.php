@@ -136,15 +136,15 @@
 
             width: 100%;
 
-            padding: 8px;
+            padding: 0px;
 
             border-radius: 22px;
 
             background:
                 linear-gradient(135deg,
-                    #d59b27,
-                    #f1c65e,
-                    #d59b27);
+                    #fff,
+                    #fff,
+                    #fff);
 
             box-shadow:
                 0 22px 55px rgba(0, 0, 0, .18);
