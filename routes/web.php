@@ -5,17 +5,14 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\MemberAdminController;
 use App\Http\Controllers\Admin\ProfessionController;
-
 use App\Http\Controllers\Public\MemberController;
 use App\Http\Controllers\Public\RegistrationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Public\SiteController;
 
 // Route::view('/', 'welcome');
-Route::get('/', [
-    RegistrationController::class,
-    'create',
-])->name('create');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -27,10 +24,10 @@ Route::view('profile', 'profile')
 
 Route::prefix('inscription')->name('registration.')->group(function () {
 
-    // Route::get('/', [
-    //     RegistrationController::class,
-    //     'create'
-    // ])->name('create');
+    Route::get('/', [
+        RegistrationController::class,
+        'create'
+    ])->name('create');
 
     Route::post('/', [
         RegistrationController::class,
@@ -42,6 +39,8 @@ Route::prefix('inscription')->name('registration.')->group(function () {
         'success',
     ])->name('success');
 });
+
+
 
 Route::get('/api/regions/{region}/departments', [
     RegistrationController::class,
@@ -62,6 +61,8 @@ Route::get(
     [MemberController::class, 'show']
 )->name('member.public');
 
+
+
 Route::middleware(['auth'])
 
     ->prefix('admin')
@@ -76,9 +77,6 @@ Route::middleware(['auth'])
         Route::resource('contributions', ContributionController::class);
 
         Route::resource('professions', ProfessionController::class);
-
-        Route::get('/reports', [ReportController::class, 'index'])
-            ->name('reports');
 
         /*
         |--------------------------------------------------------------------------
@@ -147,12 +145,11 @@ Route::middleware(['auth'])
             'locations/departments',
             [LocationController::class, 'departments']
         )->name('locations.departments');
-        
+
         Route::post('/regions', [LocationController::class, 'storeRegion'])
-        ->name('regions.store');
+            ->name('regions.store');
 
         Route::resource('professions', ProfessionController::class);
-
 
     });
 
@@ -165,7 +162,6 @@ Route::post('/logout', function (Request $request) {
     return redirect()->route('login');
 })->name('logout');
 
-
 Route::get('/membre/{member}', [
     MemberController::class,
     'show',
@@ -177,5 +173,26 @@ Route::get('/membre/{member}/qr', [
 ])->name('member.public.qr');
 
 
+
+Route::get('/', [SiteController::class, 'home'])
+    ->name('site.home');
+
+Route::get('/cooperative', [SiteController::class, 'about'])
+    ->name('site.about');
+
+Route::get('/activites', [SiteController::class, 'activities'])
+    ->name('site.activities');
+
+Route::get('/projets', [SiteController::class, 'projects'])
+    ->name('site.projects');
+
+Route::get('/partenaires', [SiteController::class, 'partners'])
+    ->name('site.partners');
+
+Route::get('/actualites', [SiteController::class, 'news'])
+    ->name('site.news');
+
+Route::get('/contact', [SiteController::class, 'contact'])
+    ->name('site.contact');
 
 require __DIR__.'/auth.php';
