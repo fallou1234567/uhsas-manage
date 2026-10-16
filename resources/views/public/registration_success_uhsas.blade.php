@@ -187,6 +187,58 @@
             transform: rotate(45deg);
         }
 
+
+        /* En-tête du titre */
+        .card-title-area {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Titre au premier plan */
+        .card-title-area .card-title {
+            position: relative;
+            z-index: 2;
+            margin: 0;
+            padding: 0 18px;
+            background: #fff;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        /* Décoration jaune derrière le titre */
+        .card-title-area .title-decoration {
+            position: absolute;
+            z-index: 1;
+            top: 75%;
+            left: 2.5%;
+            right: 2.5%;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            pointer-events: none;
+        }
+
+        .card-title-area .title-decoration>span:not(.title-diamond) {
+            display: block;
+            flex: 1;
+            height: 2px;
+            background: #d4a72c;
+        }
+
+        .card-title-area .title-decoration .title-diamond {
+            flex: 0 0 12px;
+            width: 12px;
+            height: 12px;
+            margin: 0 14px;
+            background: #d4a72c;
+            transform: rotate(45deg);
+        }
+
+
         .card-information {
             position: absolute;
             left: 4%;
@@ -245,13 +297,91 @@
             line-height: 1.18;
         }
 
+        .info-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            min-width: 0;
+            width: 100%;
+            gap: 7px;
+            color: #424a44;
+            font-size: clamp(7px, 1.32vw, 16px);
+            line-height: 1.2;
+            box-sizing: border-box;
+        }
+
+        .info-icon {
+            flex: 0 0 clamp(17px, 2.15vw, 28px);
+            width: clamp(17px, 2.15vw, 28px);
+            height: clamp(17px, 2.15vw, 28px);
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 5px;
+            background: #48504a;
+            color: #fff;
+
+            padding: 0;
+            margin: 0;
+            line-height: 0;
+            box-sizing: border-box;
+            position: relative;
+            top: 0;
+            transform: none;
+        }
+
+        .info-icon svg {
+            display: block;
+            width: 65%;
+            height: 65%;
+            flex: 0 0 auto;
+
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+            overflow: visible;
+            position: static;
+            transform: none;
+        }
+
+        .info-label,
+        .info-value {
+            align-self: center;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            flex: 0 0 auto;
+            white-space: nowrap;
+            color: #59615b;
+            font-weight: 500;
+        }
+
+        .info-value {
+            flex: 1 1 auto;
+            min-width: 0;
+            color: #2e342f;
+            font-weight: 700;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: normal;
+            line-height: 1.18;
+        }
+
+
         .member-photo-container {
             position: absolute;
-            z-index: 3;
-            right: 5%;
-            top: 27%;
-            width: 20%;
-            aspect-ratio: 1 / 1.17;
+            top: 26.5%;
+            right: 7%;
+            width: 15%;
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+            border: 2px solid #56645b;
+            border-radius: 10px;
+            box-sizing: border-box;
         }
 
         .member-photo {
@@ -259,10 +389,20 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border: 2px solid #4d554f;
-            border-radius: 8px;
-            background: #f0f0ed;
+            object-position: center;
+            max-width: none;
+            border-radius: 7px;
         }
+
+        .member-photo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667067;
+            font-size: 12px;
+            background: #f4f6f3;
+        }
+
 
         .qr-container {
             position: absolute;
@@ -339,17 +479,87 @@
             color: #dfa735;
         }
 
+
+        /* Répartition du pied de carte */
+        .card-footer .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 24px;
+            min-width: 0;
+        }
+
+
+        /* Alignement icône + texte dans le footer */
+        .card-footer .footer-item {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            line-height: 1;
+            vertical-align: middle;
+        }
+
+        /* Neutraliser les décalages propres aux SVG */
+        .card-footer .footer-item svg {
+            display: block;
+            flex: 0 0 24px;
+            width: 24px;
+            height: 24px;
+            margin: 0;
+            padding: 0;
+            position: static;
+            transform: none;
+            vertical-align: middle;
+        }
+
+        /* Centrer précisément le texte sur la hauteur de l'icône */
+        .card-footer .footer-item span {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+
+
+
         .footer-slogan {
             position: absolute;
             z-index: 3;
             left: 1.5%;
-            bottom: 8%;
+            bottom: 25%;
             width: 22%;
             color: #fff;
             text-align: center;
             font-size: clamp(5px, .85vw, 11px);
             line-height: 1.12;
             font-weight: 800;
+        }
+
+        .card-footer .footer-item {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+
+        .card-footer .footer-item svg {
+            display: block;
+            flex: 0 0 20px;
+            width: 20px;
+            height: 20px;
+
+            margin: 0;
+            padding: 0;
+            vertical-align: middle;
+            position: static;
+            transform: none;
         }
 
         .actions {
@@ -500,7 +710,7 @@
             </header>
 
             <div class="card-frame">
-                <div id="membership-card" class="membership-card">
+                <div id="membership-card" class="membership-card" data-member-card>
                     <div class="card-top-border"></div>
                     <div class="card-watermark"></div>
 
@@ -587,17 +797,19 @@
                             </div>
                         </div>
 
+
                         <div class="member-photo-container">
                             @if ($member->photo)
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($member->photo) }}"
                                     alt="Photo de {{ $member->full_name }}" class="member-photo"
                                     crossorigin="anonymous">
                             @else
-                                <div class="member-photo"
-                                    style="display:flex;align-items:center;justify-content:center;color:#667067;font-size:12px;">
-                                    Photo</div>
+                                <div class="member-photo member-photo-placeholder">
+                                    Photo
+                                </div>
                             @endif
                         </div>
+
 
                         <div class="qr-container">
                             {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->size(220)->margin(0)->generate(route('member.public', $member)) !!}
@@ -698,15 +910,34 @@
                 }));
             }
 
+
             if (saveButton) {
                 saveButton.addEventListener('click', async () => {
                     const original = saveButton.innerHTML;
                     saveButton.disabled = true;
                     saveButton.innerHTML = 'Génération…';
+
                     try {
                         await loadHtml2Canvas();
                         await document.fonts.ready;
+
+                        // Attendre le chargement des images de la carte.
                         await waitForImages(card);
+
+                        // Attendre deux cycles de rendu pour stabiliser le layout.
+                        await new Promise(resolve =>
+                            requestAnimationFrame(() =>
+                                requestAnimationFrame(resolve)
+                            )
+                        );
+
+                        const rect = card.getBoundingClientRect();
+
+                        if (!rect.width || !rect.height) {
+                            throw new Error('Dimensions de la carte invalides.');
+                        }
+
+                        // Capturer la carte sans modifier ses proportions.
                         const canvas = await window.html2canvas(card, {
                             scale: 3,
                             useCORS: true,
@@ -714,22 +945,143 @@
                             backgroundColor: '#ffffff',
                             logging: false,
                             imageTimeout: 15000,
+
+                            // Utiliser la taille réelle de la carte.
+                            width: card.offsetWidth,
+                            height: card.offsetHeight,
+                            windowWidth: Math.max(
+                                document.documentElement.clientWidth,
+                                card.scrollWidth
+                            ),
+                            windowHeight: Math.max(
+                                document.documentElement.clientHeight,
+                                card.scrollHeight
+                            ),
+
                             scrollX: 0,
-                            scrollY: 0
+                            scrollY: 0,
+
+                            onclone: clonedDocument => {
+                                const clonedCard = clonedDocument.querySelector(
+                                    '[data-member-card]'
+                                );
+
+                                if (!clonedCard) return;
+
+                                clonedCard.style.overflow = 'hidden';
+                                clonedCard.style.boxSizing = 'border-box';
+                                clonedCard.style.transform = 'none';
+
+                                /*
+                                 * Neutraliser les règles globales susceptibles
+                                 * de décaler les SVG pendant la capture.
+                                 */
+                                clonedCard.querySelectorAll('.info-row').forEach(row => {
+                                    row.style.display = 'flex';
+                                    row.style.flexDirection = 'row';
+                                    row.style.alignItems = 'center';
+                                    row.style.gap = '7px';
+                                    row.style.lineHeight = '1.2';
+                                    row.style.overflow = 'visible';
+                                });
+
+                                clonedCard.querySelectorAll('.info-icon').forEach(icon => {
+                                    icon.style.display = 'inline-flex';
+                                    icon.style.flexShrink = '0';
+                                    icon.style.alignItems = 'center';
+                                    icon.style.justifyContent = 'center';
+                                    icon.style.padding = '0';
+                                    icon.style.margin = '0';
+                                    icon.style.lineHeight = '0';
+                                    icon.style.overflow = 'hidden';
+                                    icon.style.position = 'relative';
+                                    icon.style.top = '0';
+                                    icon.style.transform = 'none';
+                                    icon.style.alignSelf = 'center';
+                                });
+
+                                clonedCard.querySelectorAll('.info-icon svg').forEach(svg => {
+                                    svg.style.display = 'block';
+                                    svg.style.width = '65%';
+                                    svg.style.height = '65%';
+                                    svg.style.flex = '0 0 auto';
+                                    svg.style.margin = '0';
+                                    svg.style.padding = '0';
+                                    svg.style.position = 'static';
+                                    svg.style.top = 'auto';
+                                    svg.style.transform = 'none';
+                                    svg.style.verticalAlign = 'middle';
+                                });
+
+                                clonedCard.querySelectorAll('.info-label, .info-value').forEach(text => {
+                                    text.style.alignSelf = 'center';
+                                    text.style.marginTop = '0';
+                                    text.style.marginBottom = '0';
+                                });
+
+                                clonedCard.querySelectorAll('.footer-content').forEach(content => {
+                                    content.style.display = 'flex';
+                                    content.style.alignItems = 'center';
+                                });
+
+                                clonedCard.querySelectorAll('.footer-item').forEach(item => {
+                                    item.style.display = 'inline-flex';
+                                    item.style.flexDirection = 'row';
+                                    item.style.alignItems = 'center';
+                                    item.style.justifyContent = 'center';
+                                    item.style.lineHeight = '1.2';
+                                    item.style.margin = '0';
+                                    item.style.padding = '0';
+                                });
+
+                                clonedCard.querySelectorAll('.footer-item svg').forEach(svg => {
+                                    svg.style.display = 'block';
+                                    svg.style.width = '20px';
+                                    svg.style.height = '20px';
+                                    svg.style.flex = '0 0 20px';
+                                    svg.style.margin = '0';
+                                    svg.style.padding = '0';
+                                    svg.style.position = 'static';
+                                    svg.style.top = 'auto';
+                                    svg.style.transform = 'none';
+                                    svg.style.verticalAlign = 'middle';
+                                });
+
+                                // Préserver les proportions des photos.
+                                clonedCard.querySelectorAll('.member-photo').forEach(img => {
+                                    img.style.objectFit = 'cover';
+                                    img.style.objectPosition = 'center';
+                                    img.style.display = 'block';
+                                });
+                            }
                         });
+
                         const blob = await new Promise((resolve, reject) => {
-                            canvas.toBlob(result => result ? resolve(result) : reject(new Error(
-                                'Image vide')), 'image/png');
+                            canvas.toBlob(result => {
+                                if (result) {
+                                    resolve(result);
+                                } else {
+                                    reject(new Error('Image PNG vide.'));
+                                }
+                            }, 'image/png');
                         });
-                        const fileName =
-                            `Carte-UHSAS-${String(memberNumber).replace(/[^a-zA-Z0-9_-]/g, '-')}.png`;
+
+                        const safeNumber = String(memberNumber)
+                            .replace(/[^a-zA-Z0-9_-]/g, '-');
+
+                        const fileName = `Carte-UHSAS-${safeNumber}.png`;
+
                         const file = new File([blob], fileName, {
                             type: 'image/png'
                         });
 
-                        if (navigator.share && navigator.canShare && navigator.canShare({
+                        if (
+                            navigator.share &&
+                            navigator.canShare &&
+                            navigator.canShare({
                                 files: [file]
-                            })) {
+                            })
+                        ) {
                             await navigator.share({
                                 title: 'Carte de membre UHSAS',
                                 text: `Carte de membre de ${memberName}`,
@@ -738,18 +1090,27 @@
                         } else {
                             const objectUrl = URL.createObjectURL(blob);
                             const link = document.createElement('a');
+
                             link.href = objectUrl;
                             link.download = fileName;
                             document.body.appendChild(link);
                             link.click();
                             link.remove();
-                            setTimeout(() => URL.revokeObjectURL(objectUrl), 3000);
+
+                            setTimeout(() => {
+                                URL.revokeObjectURL(objectUrl);
+                            }, 3000);
                         }
                     } catch (error) {
                         if (error.name !== 'AbortError') {
-                            console.error('Erreur capture carte UHSAS :', error);
+                            console.error(
+                                'Erreur capture carte UHSAS :',
+                                error
+                            );
+
                             alert(
-                                "Impossible de générer l'image. Vérifiez le chargement des photos et réessayez.");
+                                "Impossible de générer l'image. Vérifiez le chargement des photos et réessayez."
+                            );
                         }
                     } finally {
                         saveButton.disabled = false;
@@ -757,6 +1118,7 @@
                     }
                 });
             }
+
 
             if (shareButton) {
                 shareButton.addEventListener('click', async () => {

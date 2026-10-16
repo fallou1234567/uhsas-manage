@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,20 @@
     <title>@yield('title', 'UHSAS') | Union Habitat Solidaire des Artisans du Sénégal</title>
 
     @vite(['resources/css/public-site.css', 'resources/js/public-site.js'])
+    @if (request()->routeIs('site.about'))
+        <link rel="stylesheet" href="{{ asset('asset/css/about.css') }}">
+    @endif
+    @if (request()->routeIs('site.activities'))
+        <link rel="stylesheet" href="{{ asset('asset/css/activities.css') }}">
+    @endif
+    @if (request()->routeIs('site.partners'))
+        <link rel="stylesheet" href="{{ asset('asset/css/partners.css') }}">
+    @endif
+    @if (request()->routeIs('site.contact'))
+        <link rel="stylesheet" href="{{ asset('asset/css/contact.css') }}">
+    @endif
 </head>
+
 <body>
     <div class="topbar">
         <div class="container topbar-inner">
@@ -20,18 +34,15 @@
     <header class="site-header">
         <div class="container nav-container">
             <a href="{{ route('site.home') }}" class="brand">
-                <img src="{{ asset('asset/images/logo-uhsas.jpeg') }}"
-                     alt="Logo UHSAS"
-                     onerror="this.style.display='none'">
+                <img src="{{ asset('asset/images/logo-uhsas.jpeg') }}" alt="Logo UHSAS"
+                    onerror="this.style.display='none'">
                 <span>
                     <strong>UHSAS</strong>
                     <small>Ensemble, construisons l’avenir</small>
                 </span>
             </a>
 
-            <button class="menu-toggle" type="button"
-                    aria-label="Ouvrir le menu"
-                    aria-expanded="false">
+            <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
 
@@ -41,7 +52,7 @@
                 <a href="{{ route('site.activities') }}">Activités</a>
                 <a href="{{ route('site.projects') }}">Projets</a>
                 <a href="{{ route('site.partners') }}">Partenaires</a>
-                <a href="{{ route('site.news') }}">Actualités</a>
+                {{-- <a href="{{ route('site.news') }}">Actualités</a> --}}
                 <a href="{{ route('site.contact') }}">Contact</a>
                 <a href="{{ route('registration.create') }}" class="nav-cta">
                     Devenir membre
@@ -85,4 +96,5 @@
         </div>
     </footer>
 </body>
+
 </html>
