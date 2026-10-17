@@ -21,6 +21,9 @@
     @if (request()->routeIs('site.contact'))
         <link rel="stylesheet" href="{{ asset('asset/css/contact.css') }}">
     @endif
+    @if (request()->routeIs('site.projects'))
+        <link rel="stylesheet" href="{{ asset('asset/css/projects.css') }}">
+    @endif
 </head>
 
 <body>

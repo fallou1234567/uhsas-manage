@@ -123,27 +123,20 @@ class MemberAdminController extends Controller
      */
     public function create()
     {
-        $regions = Region::orderBy('name')->get();
+    $regions = Region::orderBy('name')->get();
 
-        $departments = Department::with('region')
-            ->orderBy('name')
-            ->get();
+    $departments = Department::orderBy('name')->get();
 
-        $communes = Commune::with('department')
-            ->orderBy('name')
-            ->get();
+    $communes = Commune::orderBy('name')->get();
 
-        $professions = Profession::orderBy('name')->get();
+    $professions = Profession::orderBy('name')->get();
 
-        return view(
-            'admin.members.create',
-            compact(
-                'regions',
-                'departments',
-                'communes',
-                'professions'
-            )
-        );
+    return view('admin.members.create', compact(
+        'regions',
+        'departments',
+        'communes',
+        'professions'
+    ));
     }
 
     /**
@@ -153,7 +146,12 @@ class MemberAdminController extends Controller
     {
         $validated = $request->validate([
 
-            'full_name' => [
+            'first_name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'last_name' => [
                 'required',
                 'string',
                 'max:255',
@@ -180,10 +178,9 @@ class MemberAdminController extends Controller
                 'exists:departments,id',
             ],
 
-            // 'commune_id' => [
-            //     'required',
-            //     'exists:communes,id',
-            // ],
+            'commune_id' => [
+                'nullable'
+            ],
 
             'address' => [
                 'nullable',
@@ -205,7 +202,8 @@ class MemberAdminController extends Controller
 
         ], [
 
-            'full_name.required' => 'Le nom complet est obligatoire.',
+            'first_name.required' => 'Le prénom complet est obligatoire.',
+            'flast_name.required' => 'Le nom complet est obligatoire.',
 
             'phone.required' => 'Le numéro de téléphone est obligatoire.',
 
@@ -258,20 +256,25 @@ class MemberAdminController extends Controller
                 ]);
         }
 
-        $commune = Commune::findOrFail(
-            $validated['commune_id']
-        );
+        if($validated['commune_id'])
+        {
+            $commune = Commune::findOrFail(
+                $validated['commune_id']
+            );
 
-        if (
-            (int) $commune->department_id !==
-            (int) $validated['department_id']
-        ) {
-            return back()
-                ->withInput()
-                ->withErrors([
-                    'commune_id' => 'La commune sélectionnée ne correspond pas au département choisi.',
-                ]);
+            if (
+                (int) $commune->department_id !==
+                (int) $validated['department_id']
+            ) {
+                return back()
+                    ->withInput()
+                    ->withErrors([
+                        'commune_id' => 'La commune sélectionnée ne correspond pas au département choisi.',
+                    ]);
+            }
         }
+
+
 
         /*
         |--------------------------------------------------------------------------
@@ -335,7 +338,8 @@ class MemberAdminController extends Controller
 
             'member_number' => $memberNumber,
 
-            'full_name' => $validated['full_name'],
+            'first_name' => $validated['first_name'],
+            'last_name' => $validated['last_name'],
 
             'phone' => $validated['phone'],
 
@@ -435,7 +439,13 @@ class MemberAdminController extends Controller
     ) {
         $validated = $request->validate([
 
-            'full_name' => [
+            'first_name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+
+            'last_name' => [
                 'required',
                 'string',
                 'max:255',
@@ -463,8 +473,7 @@ class MemberAdminController extends Controller
             ],
 
             'commune_id' => [
-                'required',
-                'exists:communes,id',
+                'nullable',
             ],
 
             'address' => [
@@ -508,20 +517,24 @@ class MemberAdminController extends Controller
                 ]);
         }
 
-        $commune = Commune::findOrFail(
-            $validated['commune_id']
-        );
+        if($validated['commune_id'])
+        {
+            $commune = Commune::findOrFail(
+                $validated['commune_id']
+            );
 
-        if (
-            (int) $commune->department_id !==
-            (int) $validated['department_id']
-        ) {
-            return back()
-                ->withInput()
-                ->withErrors([
-                    'commune_id' => 'La commune sélectionnée ne correspond pas au département choisi.',
-                ]);
+            if (
+                (int) $commune->department_id !==
+                (int) $validated['department_id']
+            ) {
+                return back()
+                    ->withInput()
+                    ->withErrors([
+                        'commune_id' => 'La commune sélectionnée ne correspond pas au département choisi.',
+                    ]);
+            }
         }
+
 
         /*
         |--------------------------------------------------------------------------
@@ -574,8 +587,11 @@ class MemberAdminController extends Controller
         |--------------------------------------------------------------------------
         */
 
-        $member->full_name =
-            $validated['full_name'];
+        $member->first_name =
+            $validated['first_name'];
+
+        $member->last_name =
+            $validated['last_name'];
 
         $member->phone =
             $validated['phone'];

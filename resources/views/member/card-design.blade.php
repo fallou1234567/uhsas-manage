@@ -51,7 +51,10 @@
         <div class="uhsas-bottom">
             <div class="uhsas-motto">SOLIDARITÉ • HABITAT • PROFESSIONNALISME</div>
             <div class="uhsas-valid"><small>VALABLE
-                    JUSQU'AU</small><strong>{{ $validUntil ? \Illuminate\Support\Carbon::parse($validUntil)->format('d/m/Y') : 'À CONFIRMER' }}</strong>
+                    JUSQU'AU</small><strong>
+                    {{ $member->status === 'active' && $member->activated_at
+                        ? \Illuminate\Support\Carbon::parse($member->activated_at)->addYears(5)->format('d/m/Y')
+                        : 'Non activé' }}</strong>
             </div>
         </div>
     </div>

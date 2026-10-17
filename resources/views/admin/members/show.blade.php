@@ -1291,7 +1291,7 @@
                         <div class="status-date">
 
                             <div class="status-date-label">
-                                Carte valable jusqu'au
+                                Carte valable jusqu'au 
                             </div>
 
                             <div class="status-date-value">

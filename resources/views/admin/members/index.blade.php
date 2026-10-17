@@ -977,7 +977,7 @@
 
                                         <img
                                             src="{{ asset('storage/' . $member->photo) }}"
-                                            alt="{{ $member->full_name }}"
+                                            alt="{{ $member->first_name }}"
                                             class="member-photo"
                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                                         >
@@ -986,7 +986,7 @@
                                             class="member-placeholder"
                                             style="display:none;"
                                         >
-                                            {{ strtoupper(substr($member->full_name, 0, 1)) }}
+                                            {{ strtoupper(substr($member->first_name, 0, 1)) }}
                                         </div>
 
                                     @else
@@ -995,7 +995,7 @@
 
                                             {{ strtoupper(
                                                 substr(
-                                                    $member->full_name,
+                                                    $member->first_name,
                                                     0,
                                                     1
                                                 )
@@ -1010,7 +1010,7 @@
 
                                         <div class="member-full-name">
 
-                                            {{ $member->full_name }}
+                                            {{ $member->first_name }}
 
                                         </div>
 

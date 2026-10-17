@@ -774,8 +774,14 @@
                                         <rect x="3" y="5" width="18" height="16" rx="2" />
                                         <path d="M16 3v4M8 3v4M3 10h18" />
                                     </svg></span>
-                                <span class="info-label">Délivrance :</span><span
-                                    class="info-value">{{ optional($member->activated_at ?? ($member->registered_at ?? $member->created_at))->format('d/m/Y') ?? 'En attente' }}</span>
+                                <span class="info-label">Délivrance :</span>
+                                {{-- <span class="info-value">{{ $member->status = 'active' && $member->activated_at != null ? $member->activated_at->format('d/m/Y') : 'En attente' }}</span> --}}
+
+                                <span class="info-value">
+                                    {{ $member->status === 'active' && $member->activated_at !== null
+                                        ? $member->activated_at->format('d/m/Y')
+                                        : 'En attente' }}
+                                </span>
                             </div>
                             <div class="info-row">
                                 <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -783,8 +789,13 @@
                                         <circle cx="12" cy="12" r="9" />
                                         <path d="M12 7v5l3 2" />
                                     </svg></span>
-                                <span class="info-label">Expire le :</span><span
-                                    class="info-value">{{ $member->expires_at ? \Illuminate\Support\Carbon::parse($member->expires_at)->format('d/m/Y') : 'Non activé' }}</span>
+                                <span class="info-label">Expire le :</span>
+                                {{-- <span class="info-value">{{ $member->activated_at ? \Illuminate\Support\Carbon::parse($member->activated_at)->format('d/m/Y') + 5 : 'Non activé' }}</span> --}}
+                                <span class="info-value">
+                                    {{ $member->status === 'active' && $member->activated_at
+                                        ? \Illuminate\Support\Carbon::parse($member->activated_at)->addYears(5)->format('d/m/Y')
+                                        : 'Non activé' }}
+                                </span>
                             </div>
                             <div class="info-row">
                                 <span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1013,16 +1024,18 @@
                                     svg.style.verticalAlign = 'middle';
                                 });
 
-                                clonedCard.querySelectorAll('.info-label, .info-value').forEach(text => {
-                                    text.style.alignSelf = 'center';
-                                    text.style.marginTop = '0';
-                                    text.style.marginBottom = '0';
-                                });
+                                clonedCard.querySelectorAll('.info-label, .info-value').forEach(
+                                    text => {
+                                        text.style.alignSelf = 'center';
+                                        text.style.marginTop = '0';
+                                        text.style.marginBottom = '0';
+                                    });
 
-                                clonedCard.querySelectorAll('.footer-content').forEach(content => {
-                                    content.style.display = 'flex';
-                                    content.style.alignItems = 'center';
-                                });
+                                clonedCard.querySelectorAll('.footer-content').forEach(
+                                    content => {
+                                        content.style.display = 'flex';
+                                        content.style.alignItems = 'center';
+                                    });
 
                                 clonedCard.querySelectorAll('.footer-item').forEach(item => {
                                     item.style.display = 'inline-flex';

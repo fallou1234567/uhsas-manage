@@ -64,19 +64,17 @@ class RegistrationController extends Controller
      * Si aucune commune n'est enregistrée,
      * le tableau retourné sera simplement [].
      */
-    public function communes(Department $department): JsonResponse
-    {
-        $communes = $department->communes()
-            ->where('is_active', true)
-            ->orderBy('name')
-            ->get([
-                'id',
-                'name',
-                'code',
-            ]);
 
-        return response()->json($communes);
-    }
+
+public function communes(int $department): JsonResponse
+{
+    $communes = Commune::query()
+        ->where('department_id', $department)
+        ->orderBy('name')
+        ->get(['id', 'name']);
+
+    return response()->json($communes);
+}
 
 
     /**

@@ -52,6 +52,12 @@ Route::get('/api/departments/{department}/communes', [
     'communes',
 ])->name('api.departments.communes');
 
+
+// Route::get(
+//     '/departments/{department}/communes',
+//     [LocationController::class, 'communes']
+// );
+
 Route::get(
     '/inscription/{member}/carte/pdf',
     [RegistrationController::class, 'pdf']
