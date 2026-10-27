@@ -91,7 +91,7 @@
             <article class="project-card">
                 <div class="project-image project-image-3">
                     <img
-                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
+                        src="{{ asset('asset/images/uhsas/banner1.png') }}"
                         alt="Formation professionnelle"
                         loading="lazy"
                     >
@@ -120,7 +120,7 @@
             <article class="project-card">
                 <div class="project-image project-image-4">
                     <img
-                        src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=85"
+                        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85"
                         alt="Gestion financière et accompagnement"
                         loading="lazy"
                     >
@@ -149,7 +149,7 @@
             <article class="project-card">
                 <div class="project-image project-image-5">
                     <img
-                        src="https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&w=900&q=85"
+                        src="{{ asset('asset/images/uhsas/banner2.png') }}"
                         alt="Travaux et projets de construction"
                         loading="lazy"
                     >
@@ -178,7 +178,7 @@
             <article class="project-card">
                 <div class="project-image project-image-6">
                     <img
-                        src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=900&q=85"
+                        src="{{ asset('asset/images/uhsas/banner1.png') }}"
                         alt="Initiative communautaire et solidarité"
                         loading="lazy"
                     >

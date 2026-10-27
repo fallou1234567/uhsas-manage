@@ -40,7 +40,7 @@
 
         <div class="partner-intro-visual">
             <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85"
+                src="{{ asset('asset/images/uhsas/banner1.png') }}"
                 alt="Des professionnels réunis autour d'un projet commun"
                 fetchpriority="high"
             >
@@ -108,7 +108,7 @@
         <article class="partner-network-row">
             <div class="partner-network-image">
                 <img
-                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85"
+                    src="{{ asset('asset/images/uhsas/banner3.png') }}"
                     alt="Infrastructures et bâtiments institutionnels"
                     loading="lazy"
                 >
@@ -141,7 +141,7 @@
         <article class="partner-network-row partner-network-row-reverse">
             <div class="partner-network-image">
                 <img
-                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=85"
+                    src="{{ asset('asset/images/uhsas/banner2.png') }}"
                     alt="Travaux sur un chantier de construction"
                     loading="lazy"
                 >
@@ -174,7 +174,7 @@
         <article class="partner-network-row">
             <div class="partner-network-image">
                 <img
-                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1000&q=85"
+                    src="{{ asset('asset/images/uhsas/banner2.png') }}"
                     alt="Salle de formation et apprentissage"
                     loading="lazy"
                 >
@@ -207,7 +207,7 @@
         <article class="partner-network-row partner-network-row-reverse">
             <div class="partner-network-image">
                 <img
-                    src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=85"
+                    src="{{ asset('asset/images/uhsas/banner3.png') }}"
                     alt="Documents financiers et préparation de projets"
                     loading="lazy"
                 >

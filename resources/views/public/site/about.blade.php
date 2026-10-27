@@ -52,7 +52,7 @@
 
         <div class="about-intro-visual">
             <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=85"
+                src="{{ asset('asset/images/uhsas/side1.png') }}"
                 alt="Artisans et professionnels du bâtiment sur un chantier"
                 loading="lazy"
             >

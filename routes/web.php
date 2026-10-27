@@ -201,4 +201,39 @@ Route::get('/actualites', [SiteController::class, 'news'])
 Route::get('/contact', [SiteController::class, 'contact'])
     ->name('site.contact');
 
+Route::prefix('mise-a-jour-membre')
+    ->name('member.public.update.')
+    ->controller(MemberController::class)
+    ->group(function () {
+
+        // Page de recherche par téléphone
+        Route::get('/', 'index')->name('index');
+
+        // Recherche d'une fiche à modifier
+        Route::post('/rechercher', 'search')
+            ->middleware('throttle:5,1')
+            ->name('search');
+
+        // Recherche d'un membre pour afficher sa carte virtuelle
+        Route::post('/voir-ma-carte', 'searchCard')
+            ->middleware('throttle:5,1')
+            ->name('card.search');
+
+        // Affichage de la carte virtuelle
+        Route::get('/{member}/ma-carte', 'card')
+            ->whereNumber('member')
+            ->name('card');
+
+        // Formulaire de modification
+        // À sécuriser avec un jeton temporaire avant la mise en production.
+        Route::get('/{member}/modifier', 'edit')
+            ->whereNumber('member')
+            ->name('edit');
+
+        // Enregistrement des modifications
+        Route::put('/{member}', 'update')
+            ->whereNumber('member')
+            ->middleware('throttle:5,1')
+            ->name('save');
+    });
 require __DIR__.'/auth.php';

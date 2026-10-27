@@ -60,6 +60,10 @@
                 <a href="{{ route('registration.create') }}" class="nav-cta">
                     Devenir membre
                 </a>
+                <a href="{{ route('member.public.update.index') }}" class="btn btn-gold">
+                    <i class="fas fa-user-edit"></i>
+                    Sama carte
+                </a>
             </nav>
         </div>
     </header>

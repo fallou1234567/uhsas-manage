@@ -1,84 +1,142 @@
 @extends('layouts.public-site')
 
 @section('title', 'Accueil')
-@section('description', 'Découvrez la coopérative UHSAS, ses activités, ses projets et son engagement pour les artisans
+@section('description',
+    'Découvrez la coopérative UHSAS, ses activités, ses projets et son engagement pour les artisans
     du Sénégal.')
 
 @section('content')
-    <section class="hero-slider">
-        <div class="hero-slide active"
-            style="--slide-image: url('https://www.radiofrance.fr/pikapi/images/026301d1-4a37-4138-8982-7e2c987f57dc/1200x680')">
-            <div class="hero-overlay"></div>
-            <div class="container hero-content">
-                <span class="eyebrow">UNIS POUR BÂTIR DEMAIN</span>
-                <h1>Construisons ensemble<br>un avenir plus solidaire.</h1>
-                <p>
-                    L’UHSAS rassemble les artisans autour de la solidarité,
-                    de l’habitat et du développement durable.
-                </p>
-                <div class="hero-actions">
-                    <a href="{{ route('site.about') }}" class="btn btn-gold">
-                        Découvrir la coopérative
-                    </a>
-                    <a href="{{ route('registration.create') }}" class="btn btn-outline">
-                        Devenir membre
-                    </a>
-                </div>
+
+<section class="hero-slider">
+
+    {{-- SLIDE 1 --}}
+    <div class="hero-slide active"
+         style="--slide-image: url('{{ asset('asset/images/uhsas/banner1.png') }}')">
+
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <span class="eyebrow">UNIS POUR BÂTIR DEMAIN</span>
+
+            <h1>Construisons ensemble<br>un avenir plus solidaire.</h1>
+
+            <p>
+                L’UHSAS rassemble les artisans autour de la solidarité,
+                de l’habitat et du développement durable.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{{ route('site.about') }}" class="btn btn-gold">
+                    Découvrir la coopérative
+                </a>
+
+                <a href="{{ route('registration.create') }}" class="btn btn-outline">
+                    Devenir membre
+                </a>
             </div>
+        </div>
+    </div>
+
+    {{-- SLIDE 2 --}}
+    <div class="hero-slide"
+         style="--slide-image: url('{{ asset('asset/images/uhsas/banner2.png') }}')">
+
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <span class="eyebrow">VALORISER NOS ARTISANS</span>
+
+            <h1>Le savoir-faire local<br>au cœur du progrès.</h1>
+
+            <p>
+                Favoriser la coopération, soutenir les professionnels
+                et promouvoir les compétences artisanales sénégalaises.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{{ route('site.activities') }}" class="btn btn-gold">
+                    Nos activités
+                </a>
+
+                <a href="{{ route('site.projects') }}" class="btn btn-outline">
+                    Nos projets
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{-- SLIDE 3 --}}
+    <div class="hero-slide"
+         style="--slide-image: url('{{ asset('asset/images/uhsas/banner3.png') }}')">
+
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <span class="eyebrow">LA FORCE DU COLLECTIF</span>
+
+            <h1>Ensemble, nos projets<br>prennent vie.</h1>
+
+            <p>
+                Développons des initiatives communes pour améliorer
+                les conditions de vie et renforcer la solidarité.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{{ route('site.partners') }}" class="btn btn-gold">
+                    Nos partenaires
+                </a>
+
+                <a href="{{ route('site.contact') }}" class="btn btn-outline">
+                    Nous contacter
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{-- CONTRÔLES DU SLIDER : À L'INTÉRIEUR DU HERO --}}
+    <div class="hero-controls">
+        <button type="button" class="slider-arrow slider-prev"
+                aria-label="Diapositive précédente">
+            ←
+        </button>
+
+        <div class="slider-dots" aria-label="Choisir une diapositive">
+            <button type="button" class="slider-dot active"
+                    aria-label="Diapositive 1"
+                    aria-current="true"></button>
+
+            <button type="button" class="slider-dot"
+                    aria-label="Diapositive 2"></button>
+
+            <button type="button" class="slider-dot"
+                    aria-label="Diapositive 3"></button>
         </div>
 
-        <div class="hero-slide"
-            style="--slide-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85')">
-            <div class="hero-overlay"></div>
-            <div class="container hero-content">
-                <span class="eyebrow">VALORISER NOS ARTISANS</span>
-                <h1>Le savoir-faire local<br>au cœur du progrès.</h1>
-                <p>
-                    Favoriser la coopération, soutenir les professionnels
-                    et promouvoir les compétences artisanales sénégalaises.
-                </p>
-                <div class="hero-actions">
-                    <a href="{{ route('site.activities') }}" class="btn btn-gold">
-                        Nos activités
-                    </a>
-                    <a href="{{ route('site.projects') }}" class="btn btn-outline">
-                        Nos projets
-                    </a>
-                </div>
-            </div>
-        </div>
+        <button type="button" class="slider-arrow slider-next"
+                aria-label="Diapositive suivante">
+            →
+        </button>
+    </div>
 
-        <div class="hero-slide"
-            style="--slide-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85')">
-            <div class="hero-overlay"></div>
-            <div class="container hero-content">
-                <span class="eyebrow">LA FORCE DU COLLECTIF</span>
-                <h1>Ensemble, nos projets<br>prennent vie.</h1>
-                <p>
-                    Développons des initiatives communes pour améliorer
-                    les conditions de vie et renforcer la solidarité.
-                </p>
-                <div class="hero-actions">
-                    <a href="{{ route('site.partners') }}" class="btn btn-gold">
-                        Nos partenaires
-                    </a>
-                    <a href="{{ route('site.contact') }}" class="btn btn-outline">
-                        Nous contacter
-                    </a>
-                </div>
-            </div>
-        </div>
+    {{-- BARRE DE PROGRESSION --}}
+    <div class="hero-progress">
+        <span></span>
+    </div>
 
-        <div class="hero-controls">
-            <button class="slider-arrow slider-prev" aria-label="Slide précédent">←</button>
-            <div class="slider-dots" aria-label="Choisir une diapositive">
-                <button class="slider-dot active" aria-label="Diapositive 1"></button>
-                <button class="slider-dot" aria-label="Diapositive 2"></button>
-                <button class="slider-dot" aria-label="Diapositive 3"></button>
-            </div>
-            <button class="slider-arrow slider-next" aria-label="Slide suivant">→</button>
+</section>
+
+
+
+    <div class="hero-controls">
+        <button class="slider-arrow slider-prev" aria-label="Slide précédent">←</button>
+        <div class="slider-dots" aria-label="Choisir une diapositive">
+            <button class="slider-dot active" aria-label="Diapositive 1"></button>
+            <button class="slider-dot" aria-label="Diapositive 2"></button>
+            <button class="slider-dot" aria-label="Diapositive 3"></button>
         </div>
-        <div class="hero-progress"><span></span></div>
+        <button class="slider-arrow slider-next" aria-label="Slide suivant">→</button>
+    </div>
+    <div class="hero-progress"><span></span></div>
     </section>
 
     <section class="intro-section section-padding">

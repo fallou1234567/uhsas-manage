@@ -42,7 +42,7 @@
     <div class="container activity-feature-grid">
         <div class="activity-feature-visual">
             <img
-                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=85"
+                src="{{ asset('asset/images/uhsas/banner1.png') }}"
                 alt="Architecture et construction"
                 loading="lazy"
             >
@@ -83,7 +83,7 @@
     <div class="container activity-feature-grid">
         <div class="activity-feature-visual">
             <img
-                src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1200&q=85"
+                src="{{ asset('asset/images/uhsas/banner2.png') }}"
                 alt="Artisan travaillant dans son atelier"
                 loading="lazy"
             >
@@ -124,7 +124,7 @@
     <div class="container activity-feature-grid">
         <div class="activity-feature-visual">
             <img
-                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85"
+                src="{{ asset('asset/images/uhsas/banner3.png') }}"
                 alt="Équipe en formation et en collaboration"
                 loading="lazy"
             >
