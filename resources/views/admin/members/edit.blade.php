@@ -188,7 +188,7 @@
                                     class="block text-sm font-semibold
                                           text-gray-700 mb-2">
 
-                                    Nom complet
+                                    Prénom
                                     <span class="text-red-500">*</span>
 
                                 </label>
@@ -217,7 +217,7 @@
                                     class="block text-sm font-semibold
                                           text-gray-700 mb-2">
 
-                                    Nom complet
+                                    Nom
                                     <span class="text-red-500">*</span>
 
                                 </label>
@@ -230,6 +230,35 @@
 
                                     <input type="text" id="last_name" name="last_name"
                                         value="{{ old('last_name', $member->last_name) }}" required
+                                        class="w-full pl-11 pr-4 py-3 rounded-xl
+                                           border border-gray-200
+                                           focus:border-[#075B32]
+                                           focus:ring-2 focus:ring-[#075B32]/10
+                                           outline-none transition">
+
+                                </div>
+
+                            </div>
+
+                            <div class="md:col-span-2">
+
+                                <label for="poste"
+                                    class="block text-sm font-semibold
+                                          text-gray-700 mb-2">
+
+                                    Poste / Fonction
+                                    {{-- <span class="text-red-500">*</span> --}}
+
+                                </label>
+
+                                <div class="relative">
+
+                                    <i
+                                        class="fas fa-user absolute left-4 top-1/2
+                                          -translate-y-1/2 text-gray-400"></i>
+
+                                    <input type="text" id="poste" name="poste"
+                                        value="{{ old('poste', $member->poste) }}" 
                                         class="w-full pl-11 pr-4 py-3 rounded-xl
                                            border border-gray-200
                                            focus:border-[#075B32]

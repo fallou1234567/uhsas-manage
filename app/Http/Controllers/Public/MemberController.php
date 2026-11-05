@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Models\Profession;
 
 class MemberController extends Controller
 {
@@ -106,7 +107,13 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        return view('public.update-form', compact('member'));
+           $professions = Profession::orderBy('name')->get();
+
+    return view('public.update-form', compact(
+        'member',
+        'professions'
+    ));
+
     }
 
     /**
@@ -115,6 +122,11 @@ class MemberController extends Controller
     public function update(Request $request, Member $member)
     {
         $validated = $request->validate([
+            'profession_id' => [
+                'nullable',
+                'integer',
+                'exists:professions,id',
+            ],
             'birth_date' => [
                 'nullable',
                 'date',
@@ -125,6 +137,8 @@ class MemberController extends Controller
                 File::image()->max(3 * 1024),
             ],
         ], [
+            'profession_id.integer' => 'Le métier sélectionné est invalide.',
+            'profession_id.exists' => 'Le métier sélectionné n’existe pas.',
             'birth_date.date' => 'La date de naissance est invalide.',
             'birth_date.before_or_equal' =>
                 'La date de naissance ne peut pas être dans le futur.',
