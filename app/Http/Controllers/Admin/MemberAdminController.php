@@ -73,9 +73,16 @@ class MemberAdminController extends Controller
         */
 
         $members = $query
-            ->orderByDesc('registered_at')
+            ->orderByRaw("CAST(SUBSTRING(member_number, 7) AS UNSIGNED) ASC")
             ->paginate(15)
             ->withQueryString();
+
+            //     $members = $query
+            // ->orderByRaw("CASE WHEN phone IS NULL OR phone = '' THEN 1 ELSE 0 END ASC")
+            // ->orderBy('phone', 'asc')
+            // ->orderByRaw("CAST(SUBSTRING(member_number, 7) AS UNSIGNED) ASC")
+            // ->paginate(15)
+            // ->withQueryString();
 
         /*
         |--------------------------------------------------------------------------

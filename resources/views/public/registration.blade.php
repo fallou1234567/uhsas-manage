@@ -879,93 +879,64 @@
                     <section class="uhsas-section">
 
                         <div class="mb-5">
-
-                            <h2
-                                class="
-                                text-lg
-                                sm:text-xl
-                                font-bold
-                                text-gray-900
-                            ">
+                            <h2 class="text-lg sm:text-xl font-bold text-gray-900">
                                 2. Photo
                             </h2>
 
-                            <p
-                                class="
-                                mt-1
-                                text-sm
-                                text-gray-500
-                            ">
+                            <p class="mt-1 text-sm text-gray-500">
                                 Une photo claire du visage est nécessaire
                                 pour votre carte.
                             </p>
-
                         </div>
-
 
                         <div class="photo-upload">
 
                             <label for="photo" class="uhsas-label">
-
                                 Photo du membre
-
-                                <span class="required-star">
-                                    *
-                                </span>
-
+                                <span class="required-star">*</span>
                             </label>
 
                             <input id="photo" type="file" name="photo"
-                                accept="image/jpeg,image/png,image/webp" capture="user" required
+                                accept="image/jpeg,image/png,image/webp" required
                                 class="
-                                block
-                                w-full
-                                text-sm
-                                text-gray-600
-                                file:mr-3
-                                file:rounded-lg
-                                file:border-0
-                                file:bg-green-700
-                                file:px-4
-                                file:py-3
-                                file:text-sm
-                                file:font-semibold
-                                file:text-white
-                            ">
+                block
+                w-full
+                text-sm
+                text-gray-600
+                file:mr-3
+                file:rounded-lg
+                file:border-0
+                file:bg-green-700
+                file:px-4
+                file:py-3
+                file:text-sm
+                file:font-semibold
+                file:text-white
+            ">
 
-                            <p
-                                class="
-                                mt-3
-                                text-xs
-                                text-gray-500
-                                leading-relaxed
-                            ">
+                            <p class="mt-3 text-xs text-gray-500 leading-relaxed">
                                 JPG, JPEG, PNG ou WEBP — maximum 5 Mo.
-                                Sur téléphone, vous pouvez directement
-                                prendre une photo.
+                                Vous pouvez choisir une image dans votre galerie,
+                                parcourir vos fichiers ou prendre directement une photo
+                                avec votre appareil.
                             </p>
 
-
                             {{-- Preview --}}
-
                             <div id="photoPreview" class="hidden mt-4">
-
-                                <img id="previewImage" src="" alt="Aperçu"
+                                <img id="previewImage" src="" alt="Aperçu de la photo"
                                     class="
-                                    mx-auto
-                                    h-32
-                                    w-32
-                                    rounded-full
-                                    object-cover
-                                    border-4
-                                    border-white
-                                    shadow
-                                ">
-
+                    mx-auto
+                    h-32
+                    w-32
+                    rounded-full
+                    object-cover
+                    border-4
+                    border-white
+                    shadow
+                ">
                             </div>
 
                         </div>
-
 
                         @error('photo')
                             <p class="field-error">
