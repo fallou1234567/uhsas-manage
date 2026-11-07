@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
 
+            $table->string('poste')->nullable();
+
             $table->date('birth_date')->nullable();
 
             $table->enum('gender', [

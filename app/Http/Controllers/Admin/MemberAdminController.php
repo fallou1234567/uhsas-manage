@@ -458,6 +458,12 @@ class MemberAdminController extends Controller
                 'max:255',
             ],
 
+                'poste' => [
+                'string',
+                'max:255',
+                'nullable'
+            ],
+
             'phone' => [
                 'required',
                 'string',
@@ -599,6 +605,9 @@ class MemberAdminController extends Controller
 
         $member->last_name =
             $validated['last_name'];
+
+        $member->poste =
+            $validated['poste'];
 
         $member->phone =
             $validated['phone'];

@@ -31,8 +31,10 @@
                 @endif
             </div>
             <div class="uhsas-info">
-                <div class="uhsas-info-item full"><span class="uhsas-label">Nom complet</span><span
+                <div class="uhsas-info-item "><span class="uhsas-label">Nom complet</span><span
                         class="uhsas-value name">{{ $member->full_name }}</span></div>
+                <div class="uhsas-info-item"><span class="uhsas-label">Fonction</span><span
+                    class="uhsas-value">{{ $member->poste ?? 'Membre' }}</span></div>
                 <div class="uhsas-info-item"><span class="uhsas-label">Profession</span><span
                         class="uhsas-value">{{ $member->profession?->name ?? 'Non renseigné' }}</span></div>
                 <div class="uhsas-info-item"><span class="uhsas-label">Numéro membre</span><span

@@ -6,8 +6,8 @@
 
     <style>
         /* =========================================
-       UHSAS — Aperçu photo de profil
-       ========================================= */
+               UHSAS — Aperçu photo de profil
+               ========================================= */
 
         .uhsas-photo-group {
             margin-bottom: 28px;
@@ -178,148 +178,145 @@
         }
 
 
-/* Champ date de naissance UHSAS */
+        /* Champ date de naissance UHSAS */
 
-.uhsas-date-wrapper {
-    position: relative;
-    min-height: 54px;
-    background: #fff;
-    border: 1px solid #dce4dd;
-    border-radius: 12px;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
+        .uhsas-date-wrapper {
+            position: relative;
+            min-height: 54px;
+            background: #fff;
+            border: 1px solid #dce4dd;
+            border-radius: 12px;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
 
-.uhsas-date-wrapper:hover {
-    border-color: #a5b8aa;
-}
+        .uhsas-date-wrapper:hover {
+            border-color: #a5b8aa;
+        }
 
-.uhsas-date-wrapper:focus-within {
-    border-color: #173f35;
-    box-shadow: 0 0 0 4px rgba(23, 63, 53, 0.10);
-}
+        .uhsas-date-wrapper:focus-within {
+            border-color: #173f35;
+            box-shadow: 0 0 0 4px rgba(23, 63, 53, 0.10);
+        }
 
-.uhsas-date-wrapper .uhsas-input-icon {
-    width: 48px;
-    flex-shrink: 0;
-    color: #b3932d;
-    font-size: 16px;
-}
+        .uhsas-date-wrapper .uhsas-input-icon {
+            width: 48px;
+            flex-shrink: 0;
+            color: #b3932d;
+            font-size: 16px;
+        }
 
-.uhsas-date-wrapper input[type="date"] {
-    min-width: 0;
-    min-height: 52px;
-    padding: 12px 14px 12px 0;
-    color: #173f35;
-    background: transparent;
-    border: none;
-    border-radius: 12px;
-    outline: none;
-    box-shadow: none;
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-}
+        .uhsas-date-wrapper input[type="date"] {
+            min-width: 0;
+            min-height: 52px;
+            padding: 12px 14px 12px 0;
+            color: #173f35;
+            background: transparent;
+            border: none;
+            border-radius: 12px;
+            outline: none;
+            box-shadow: none;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+        }
 
-.uhsas-date-wrapper input[type="date"]:focus {
-    border: none;
-    outline: none;
-    box-shadow: none;
-}
+        .uhsas-date-wrapper input[type="date"]:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
 
-.uhsas-date-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
-    padding: 5px;
-    cursor: pointer;
-    opacity: 0.75;
-}
+        .uhsas-date-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+            padding: 5px;
+            cursor: pointer;
+            opacity: 0.75;
+        }
 
-.uhsas-date-wrapper input[type="date"]::-webkit-calendar-picker-indicator:hover {
-    opacity: 1;
-}
+        .uhsas-date-wrapper input[type="date"]::-webkit-calendar-picker-indicator:hover {
+            opacity: 1;
+        }
 
-.uhsas-date-wrapper input[type="date"]:invalid {
-    color: #758178;
-}
-
-
-/* Popup de succès UHSAS */
-
-.uhsas-success-popup {
-    border-radius: 20px !important;
-    padding: 30px 24px !important;
-    box-shadow: 0 20px 60px rgba(23, 63, 53, 0.16) !important;
-}
-
-.uhsas-success-title {
-    color: #173f35 !important;
-    font-weight: 800 !important;
-}
-
-.uhsas-success-button {
-    padding: 12px 28px !important;
-    border-radius: 9px !important;
-    font-weight: 700 !important;
-}
-
-.swal2-icon.swal2-success {
-    border-color: #173f35 !important;
-    color: #173f35 !important;
-}
-
-.swal2-icon.swal2-success [class^="swal2-success-line"] {
-    background-color: #173f35 !important;
-}
-
-.swal2-icon.swal2-success .swal2-success-ring {
-    border-color: rgba(23, 63, 53, 0.25) !important;
-}
+        .uhsas-date-wrapper input[type="date"]:invalid {
+            color: #758178;
+        }
 
 
-@media (max-width: 600px) {
-    .uhsas-date-wrapper {
-        min-height: 50px;
-    }
+        /* Popup de succès UHSAS */
 
-    .uhsas-date-wrapper .uhsas-input-icon {
-        width: 44px;
-    }
+        .uhsas-success-popup {
+            border-radius: 20px !important;
+            padding: 30px 24px !important;
+            box-shadow: 0 20px 60px rgba(23, 63, 53, 0.16) !important;
+        }
 
-    .uhsas-date-wrapper input[type="date"] {
-        min-height: 48px;
-        font-size: 16px;
-    }
-}
+        .uhsas-success-title {
+            color: #173f35 !important;
+            font-weight: 800 !important;
+        }
+
+        .uhsas-success-button {
+            padding: 12px 28px !important;
+            border-radius: 9px !important;
+            font-weight: 700 !important;
+        }
+
+        .swal2-icon.swal2-success {
+            border-color: #173f35 !important;
+            color: #173f35 !important;
+        }
+
+        .swal2-icon.swal2-success [class^="swal2-success-line"] {
+            background-color: #173f35 !important;
+        }
+
+        .swal2-icon.swal2-success .swal2-success-ring {
+            border-color: rgba(23, 63, 53, 0.25) !important;
+        }
 
 
+        @media (max-width: 600px) {
+            .uhsas-date-wrapper {
+                min-height: 50px;
+            }
 
+            .uhsas-date-wrapper .uhsas-input-icon {
+                width: 44px;
+            }
+
+            .uhsas-date-wrapper input[type="date"] {
+                min-height: 48px;
+                font-size: 16px;
+            }
+        }
     </style>
 
 
-@if (session('success'))
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Mise à jour réussie !',
-                text: @json(session('success')),
-                confirmButtonText: 'Continuer',
-                confirmButtonColor: '#173f35',
-                background: '#ffffff',
-                color: '#173f35',
-                timer: 4000,
-                timerProgressBar: true,
-                showConfirmButton: true,
-                customClass: {
-                    popup: 'uhsas-success-popup',
-                    title: 'uhsas-success-title',
-                    confirmButton: 'uhsas-success-button'
-                }
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Mise à jour réussie !',
+                    text: @json(session('success')),
+                    confirmButtonText: 'Continuer',
+                    confirmButtonColor: '#173f35',
+                    background: '#ffffff',
+                    color: '#173f35',
+                    timer: 4000,
+                    timerProgressBar: true,
+                    showConfirmButton: true,
+                    customClass: {
+                        popup: 'uhsas-success-popup',
+                        title: 'uhsas-success-title',
+                        confirmButton: 'uhsas-success-button'
+                    }
+                });
             });
-        });
-    </script>
-@endif
+        </script>
+    @endif
 
 
     <section class="content-section" style="padding: 60px 0;">
@@ -344,7 +341,8 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('member.public.update.save', $member->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('member.public.update.save', $member->id) }}"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -366,6 +364,36 @@
                         Renseignez votre date de naissance exacte.
                     </small>
                 </div>
+
+                <div class="form-group uhsas-form-group">
+                    <label for="profession_id">Métier / Profession</label>
+
+                    <div class="uhsas-input-wrapper">
+                        <span class="uhsas-input-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </span>
+
+                        <select id="profession_id" name="profession_id"
+                            class="form-control uhsas-input @error('profession_id') is-invalid @enderror">
+                            <option value="">Sélectionnez votre métier</option>
+
+                            @foreach ($professions as $profession)
+                                <option value="{{ $profession->id }}" @selected(old('profession_id', $member->profession_id) == $profession->id)>
+                                    {{ $profession->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    @error('profession_id')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+
+                    <small class="uhsas-input-help">
+                        Sélectionnez le métier que vous exercez actuellement.
+                    </small>
+                </div>
+
 
 
 
